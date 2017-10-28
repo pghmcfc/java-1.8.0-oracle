@@ -39,7 +39,6 @@
 # that the priority number remains 6 digits
 %define priority        180%{?buildver}%{!?buildver:000}
 %define tzupdate        0
-%define jce_strongenc   1
 %define jpp_epoch       1
 
 # TODO: Think about using conditionals for version variants.
@@ -69,7 +68,6 @@
 %define sdklibdir       %{_jvmdir}/%{sdklnk}/lib
 %define jrebindir       %{_jvmdir}/%{jrelnk}/bin
 %define jvmjardir       %{_jvmjardir}/%{name}-%{version}%{multi_suffix}
-%define policydir       %{name}%{multi_suffix}
 %define javaplugin      libjavaplugin.so%{multi_suffix}
 %define pluginname      %{_jvmdir}/%{jrelnk}/lib/%{archname}/libnpjp2.so
 
@@ -109,10 +107,6 @@ NoSource:       0
 %if %{tzupdate}
 Source100:      tzupdater-%{tzversion}.zip
 NoSource:       100
-%endif
-%if %{jce_strongenc}
-Source101:      jce_policy-8.zip
-NoSource:       101
 %endif
 Requires:       jpackage-utils >= 0:1.5.38
 Requires(post): %{_sbindir}/alternatives
@@ -260,13 +254,6 @@ rm -rf jre/lib/tzdb.dat.tzdata20[1-9][0-9][a-z]
 %setup -q -n %{toplevel_dir}
 %endif
 
-# Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files for JDK/JRE 8
-%if %{jce_strongenc}
-cd jre/lib/security/
-unzip -jo %{SOURCE101}
-cd -
-%endif
-
 # determine upstream release date
 reldate=$(ls --time-style=long-iso -g -G src.zip | awk '{print $4}')
 # touch documentation to avoid multilib conflicts
@@ -334,15 +321,6 @@ install -d -m 755 $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/endorsed
 
 # fix up extensions symlinks
 symlinks -cs $RPM_BUILD_ROOT%{jvmjardir}
-
-# jce policy file handling
-install -d -m 755 $RPM_BUILD_ROOT%{_jvmprivdir}/%{policydir}/jce/vanilla
-for file in local_policy.jar US_export_policy.jar; do
-  mv $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/security/$file \
-    $RPM_BUILD_ROOT%{_jvmprivdir}/%{policydir}/jce/vanilla
-  # for ghosts
-  touch $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/security/$file
-done
 
 # versionless symlinks
 pushd $RPM_BUILD_ROOT%{_jvmdir}
@@ -446,22 +424,6 @@ update-alternatives --install %{_jvmdir}/jre-%{origin} jre_%{origin} %{_jvmdir}/
 update-alternatives --install %{_jvmdir}/jre-%{javaver} jre_%{javaver} %{_jvmdir}/%{jrelnk} %{priority} \
 --slave %{_jvmjardir}/jre-%{javaver}       jre_%{javaver}_exports      %{_jvmjardir}/%{jrelnk}
 
-if [ -d %{_jvmdir}/%{jrelnk}/lib/security ]; then
-  # Need to remove the old jars in order to support upgrading, ugly :(
-  # update-alternatives fails silently if the link targets exist as files.
-  rm -f %{_jvmdir}/%{jrelnk}/lib/security/{local,US_export}_policy.jar
-fi
-update-alternatives \
-  --install \
-    %{_jvmdir}/%{jrelnk}/lib/security/local_policy.jar \
-    jce_%{javaver}_%{origin}_local_policy%{multi_suffix} \
-    %{_jvmprivdir}/%{policydir}/jce/vanilla/local_policy.jar \
-    %{priority} \
-  --slave \
-    %{_jvmdir}/%{jrelnk}/lib/security/US_export_policy.jar \
-    jce_%{javaver}_%{origin}_us_export_policy%{multi_suffix} \
-    %{_jvmprivdir}/%{policydir}/jce/vanilla/US_export_policy.jar
-
 # build classes.jsa
 %ifnarch x86_64
 cd %{_jvmdir}/%{jredir}
@@ -563,9 +525,6 @@ exit 0
 %postun headless
 if [ $1 -eq 0 ]; then
   update-alternatives --remove java %{jrebindir}/java
-  update-alternatives --remove \
-    jce_%{javaver}_%{origin}_local_policy%{multi_suffix} \
-    %{_jvmprivdir}/%{policydir}/jce/vanilla/local_policy.jar
   update-alternatives --remove jre_%{origin}  %{_jvmdir}/%{jrelnk}
   update-alternatives --remove jre_%{javaver} %{_jvmdir}/%{jrelnk}
 fi
@@ -754,14 +713,6 @@ fi
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.policy
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.security
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/trusted.libraries
-%if %{jce_strongenc}
-%{_jvmdir}/%{jredir}/lib/security/local_policy.jar
-%{_jvmdir}/%{jredir}/lib/security/US_export_policy.jar
-%doc %{_jvmdir}/%{jredir}/lib/security/README.txt
-%else
-%ghost %{_jvmdir}/%{jredir}/lib/security/local_policy.jar
-%ghost %{_jvmdir}/%{jredir}/lib/security/US_export_policy.jar
-%endif
 %{_jvmdir}/%{jredir}/lib/security/policy/limited/US_export_policy.jar
 %{_jvmdir}/%{jredir}/lib/security/policy/limited/local_policy.jar
 %{_jvmdir}/%{jredir}/lib/security/policy/unlimited/US_export_policy.jar
@@ -770,7 +721,6 @@ fi
 %{_jvmdir}/%{jrelnk}
 %{_jvmjardir}/%{jrelnk}
 %{_jvmjardir}/%{sdkdir}/
-%{_jvmprivdir}/%{policydir}/
 %{_mandir}/man1/java-%{name}.%{_arch}.1*
 %{_mandir}/man1/jjs-%{name}.%{_arch}.1*
 %{_mandir}/man1/keytool-%{name}.%{_arch}.1*
