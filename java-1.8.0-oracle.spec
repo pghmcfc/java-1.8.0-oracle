@@ -98,7 +98,7 @@
 
 Name:           java-%{javaver}-%{origin}
 Version:        %{javaver}%{?buildver:.%{buildver}}
-Release:        1.0.cf
+Release:        2.0.cf
 Summary:        Oracle Java Runtime Environment
 License:        Oracle Corporation Binary Code License
 URL:            http://download.oracle.com/javase/8/docs/
@@ -822,6 +822,10 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Sat Oct 28 2017 Jonathan G. Underwood <jonathan.underwood@gmail.com> - 1.8.0.152-2.0.cf
+- Use bundled limited and unlimited JCE policy
+- No longer set up JCE policy with alternatives
+
 * Wed Oct 18 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.152-1.0.cf
 - update to 1.8.0.152 (bugfix and security update; see release notes at
   http://www.oracle.com/technetwork/java/javase/8u152-relnotes-3850503.html)
