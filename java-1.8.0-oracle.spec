@@ -33,8 +33,8 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        11
-%define tzversion       1_4_5-2014e
+%define buildver        20
+%define tzversion       1_4_6-2014f
 # Note: when buildver reaches 3 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
 %define priority        1800%{?buildver}%{!?buildver:00}
@@ -504,6 +504,8 @@ update-alternatives --install %{_bindir}/javac javac %{sdkbindir}/javac %{priori
                                             javafxpackager.1$ext        %{_mandir}/man1/javafxpackager-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/javah.1$ext         javah.1$ext                 %{_mandir}/man1/javah-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/javap.1$ext         javap.1$ext                 %{_mandir}/man1/javap-%{name}.%{_arch}.1$ext \
+--slave %{_mandir}/man1/javapackager.1$ext \
+                                            javapackager.1$ext          %{_mandir}/man1/javapackager-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jdb.1$ext           jdb.1$ext                   %{_mandir}/man1/jdb-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jdeps.1$ext         jdeps.1$ext                 %{_mandir}/man1/jdeps-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/native2ascii.1$ext  native2ascii.1$ext          %{_mandir}/man1/native2ascii-%{name}.%{_arch}.1$ext \
@@ -761,6 +763,7 @@ fi
 %{_mandir}/man1/javafxpackager-%{name}.%{_arch}.1*
 %{_mandir}/man1/javah-%{name}.%{_arch}.1*
 %{_mandir}/man1/javap-%{name}.%{_arch}.1*
+%{_mandir}/man1/javapackager-%{name}.%{_arch}.1*
 %{_mandir}/man1/jdb-%{name}.%{_arch}.1*
 %{_mandir}/man1/jdeps-%{name}.%{_arch}.1*
 %{_mandir}/man1/jvisualvm-%{name}.%{_arch}.1*
@@ -825,6 +828,13 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Fri Aug 22 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.20-1.0.cf
+- update to 1.8.0.20 (cumulative bugfix and enhancement update; see release
+  notes at
+  http://www.oracle.com/technetwork/java/javase/8u20-relnotes-2257729.html)
+- update tzupdater to 1_4_6-2014f
+- added alternatives slaves for javapackager and its man page
+
 * Wed Jul 16 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.11-1.0.cf
 - update to 1.8.0.11 (cumulative bugfix, enhancement and security update; see
   release notes at
