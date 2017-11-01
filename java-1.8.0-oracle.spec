@@ -33,8 +33,8 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        102
-%define tzversion       2_0_3-2015b
+%define buildver        112
+%define tzversion       2_1_0
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
 %define priority        180%{?buildver}%{!?buildver:000}
@@ -880,6 +880,14 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Oct 19 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.112-1.0.cf
+- update to 1.8.0.112 (cumulative bugfix, enhancement and security update; see
+  release notes at
+  http://www.oracle.com/technetwork/java/javase/8u112-relnotes-3124973.html)
+- update tzupdater to 2.1.0 but don't try to use it because it tries to
+  download (http://www.iana.org/time-zones/repository/tzdata-latest.tar.gz)
+  the data, which may not work and will result in unpredictable builds
+
 * Wed Jul 20 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.102-1.0.cf
 - update to 1.8.0.102 (cumulative bugfix, enhancement and security update; see
   release notes at
