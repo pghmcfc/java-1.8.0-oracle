@@ -827,519 +827,519 @@ fi
 - No longer set up JCE policy with alternatives
 
 * Wed Oct 18 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.152-1.0.cf
-- update to 1.8.0.152 (bugfix and security update; see release notes at
+- Update to 1.8.0.152 (bugfix and security update; see release notes at
   http://www.oracle.com/technetwork/java/javase/8u152-relnotes-3850503.html)
 
 * Thu Jul 27 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.144-1.0.cf
-- update to 1.8.0.144 (bugfix and security update; see release notes at
+- Update to 1.8.0.144 (bugfix and security update; see release notes at
   http://www.oracle.com/technetwork/java/javase/8u144-relnotes-3838694.html)
 
 * Wed Jul 19 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.141-1.0.cf
-- update to 1.8.0.141 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.141 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8u141-relnotes-3720385.html)
-- drop legacy BuildRoot and Group tags
-- drop explicit buildroot cleaning in %%install section
-- drop explicit %%clean section
+- Drop legacy BuildRoot and Group tags
+- Drop explicit buildroot cleaning in %%install section
+- Drop explicit %%clean section
 
 * Wed Apr 19 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.131-1.0.cf
-- update to 1.8.0.131 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.131 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8u131-relnotes-3565278.html)
 
 * Wed Jan 18 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.121-1.0.cf
-- update to 1.8.0.121 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.121 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8u121-relnotes-3315208.html)
-- update tzupdater to 2.1.1
-- filter libav* dependencies in javafx package
+- Update tzupdater to 2.1.1
+- Filter libav* dependencies in javafx package
 
 * Wed Oct 19 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.112-1.0.cf
-- update to 1.8.0.112 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.112 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8u112-relnotes-3124973.html)
-- update tzupdater to 2.1.0 but don't try to use it because it tries to
+- Update tzupdater to 2.1.0 but don't try to use it because it tries to
   download (http://www.iana.org/time-zones/repository/tzdata-latest.tar.gz)
   the data, which may not work and will result in unpredictable builds
 
 * Wed Jul 20 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.102-1.0.cf
-- update to 1.8.0.102 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.102 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8u102-relnotes-3021767.html)
 
 * Wed Apr 20 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.92-1.0.cf
-- update to 1.8.0.92 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.92 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8u92-relnotes-2949471.html)
 
 * Thu Mar 24 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.77-1.0.cf
-- update to 1.8.0.77 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.77 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8u77-relnotes-2944725.html)
 
 * Mon Feb  8 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.74-1.0.cf
-- update to 1.8.0.74 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.74 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8u74-relnotes-2879024.html)
 
 * Wed Jan 20 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.72-1.0.cf
-- update to 1.8.0.72 (cumulative bugfix and security update; see release
+- Update to 1.8.0.72 (cumulative bugfix and security update; see release
   notes at
   http://www.oracle.com/technetwork/java/javase/8u72-relnotes-2775802.html)
 
 * Wed Oct 21 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.66-1.0.cf
-- update to 1.8.0.66 (cumulative bugfix and security update; see release
+- Update to 1.8.0.66 (cumulative bugfix and security update; see release
   notes at
   http://www.oracle.com/technetwork/java/javase/8u66-relnotes-2692847.html)
 
 * Sun Sep 20 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.60-1.0.cf
-- update to 1.8.0.60 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.60 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8u60-relnotes-2620227.html)
 
 * Wed Apr 15 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.45-2.0.cf
-- update jre and java provides (thanks to Roderick Johnstone)
+- Update jre and java provides (thanks to Roderick Johnstone)
 
 * Wed Apr 15 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.45-1.0.cf
-- update to 1.8.0.45 (cumulative bugfix and security update; see release
+- Update to 1.8.0.45 (cumulative bugfix and security update; see release
   notes at
   http://www.oracle.com/technetwork/java/javase/8u45-relnotes-2494160.html)
 
 * Wed Mar  4 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.40-1.0.cf
-- update to 1.8.0.40 (bugfix and enhancement release; see release notes at
+- Update to 1.8.0.40 (bugfix and enhancement release; see release notes at
   http://www.oracle.com/technetwork/java/javase/8u40-relnotes-2389089.html)
-- update tzupdater to 2_0_0-2015a
+- Update tzupdater to 2_0_0-2015a
 
 * Tue Feb  3 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.31-1.0.cf
-- update to 1.8.0.31 (cumulative bugfix and security update; see release
+- Update to 1.8.0.31 (cumulative bugfix and security update; see release
   notes at
   http://www.oracle.com/technetwork/java/javase/8u31-relnotes-2389094.html)
-- disable tzupdate for this release as bundled data is newer
-- include support for strong encryption policy (enabled by default), thanks to
+- Disable tzupdate for this release as bundled data is newer
+- Include support for strong encryption policy (enabled by default), thanks to
   Benjamin Fischer
-- add hack for disabling jar repacking on EL-5, thanks to Benjamin Fischer
+- Add hack for disabling jar repacking on EL-5, thanks to Benjamin Fischer
 
 * Fri Dec 19 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.25-2.0.cf
-- update tzupdater to 1_4_9-2014i
-- use %%license where possible
+- Update tzupdater to 1_4_9-2014i
+- Use %%license where possible
 
 * Wed Oct 15 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.25-1.0.cf
-- update to 1.8.0.25 (cumulative bugfix and security update; see release
+- Update to 1.8.0.25 (cumulative bugfix and security update; see release
   notes at
   http://www.oracle.com/technetwork/java/javase/8u25-relnotes-2296185.html)
-- update tzupdater to 1_4_8-2014h
+- Update tzupdater to 1_4_8-2014h
 
 * Fri Aug 22 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.20-1.0.cf
-- update to 1.8.0.20 (cumulative bugfix and enhancement update; see release
+- Update to 1.8.0.20 (cumulative bugfix and enhancement update; see release
   notes at
   http://www.oracle.com/technetwork/java/javase/8u20-relnotes-2257729.html)
-- update tzupdater to 1_4_6-2014f
-- added alternatives slaves for javapackager and its man page
+- Update tzupdater to 1_4_6-2014f
+- Added alternatives slaves for javapackager and its man page
 
 * Wed Jul 16 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.11-1.0.cf
-- update to 1.8.0.11 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.11 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8u11-relnotes-2232915.html)
-- update tzupdater to 1_4_5-2014e
+- Update tzupdater to 1_4_5-2014e
 
 * Thu Apr 17 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.5-1.0.cf
-- update to 1.8.0.5 (cumulative bugfix, enhancement and security update; see
+- Update to 1.8.0.5 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/8train-relnotes-latest-2153846.html)
-- drop .png suffix from Icon specification in desktop files
+- Drop .png suffix from Icon specification in desktop files
 
 * Tue Mar 25 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.0-1.0.cf
-- first Oracle Java SE 8 build
-- thanks to Shawn Heisey for the inspiration for this package
-- update tzupdater to 1_4_2-2014a
-- add headless sub-package
-- drop jdbc sub-package
-- drop filter for problematic ODBC/codec dependencies since they are no
+- First Oracle Java SE 8 build
+- Thanks to Shawn Heisey for the inspiration for this package
+- Update tzupdater to 1_4_2-2014a
+- Add headless sub-package
+- Drop jdbc sub-package
+- Drop filter for problematic ODBC/codec dependencies since they are no
   longer ambiguous
-- drop support for old distributions prior to FC-5
+- Drop support for old distributions prior to FC-5
 
 * Wed Jan 15 2014 Paul Howarth <paul@city-fan.org> - 1.7.0.51-1.0.cf
-- update to 1.7.0.51 (cumulative bugfix, enhancement and security update; see
+- Update to 1.7.0.51 (cumulative bugfix, enhancement and security update; see
   release notes at
   http://www.oracle.com/technetwork/java/javase/7u51-relnotes-2085002.html)
-- update tzupdater to 1_3_62-2013i
-- added alternatives slaves for jmc and its man page
-- drop redundant %%pre scriptlet
+- Update tzupdater to 1_3_62-2013i
+- Added alternatives slaves for jmc and its man page
+- Drop redundant %%pre scriptlet
 
 * Thu Oct 17 2013 Paul Howarth <paul@city-fan.org> - 1.7.0.45-1.0.cf
-- update to 1.7.0.45 (multiple security and other fixes; see release notes at
+- Update to 1.7.0.45 (multiple security and other fixes; see release notes at
   http://www.oracle.com/technetwork/java/javase/7u45-relnotes-2016950.html)
-- update tzupdater to 1_3_60-2013g
+- Update tzupdater to 1_3_60-2013g
 
 * Wed Sep 11 2013 Paul Howarth <paul@city-fan.org> - 1.7.0.40-1.0.cf
-- update to 1.7.0.40 (bug-fix and enhancement update; see release notes at
+- Update to 1.7.0.40 (bug-fix and enhancement update; see release notes at
   http://www.oracle.com/technetwork/java/javase/7u40-relnotes-2004172.html)
-- update tzupdater to 1_3_57-2013d (not used in this build)
+- Update tzupdater to 1_3_57-2013d (not used in this build)
 
 * Wed Jun 19 2013 Paul Howarth <paul@city-fan.org> - 1.7.0.25-1.0.cf
-- update to 1.7.0.25 (multiple security and other fixes; see release notes at
+- Update to 1.7.0.25 (multiple security and other fixes; see release notes at
   http://www.oracle.com/technetwork/java/javase/7u25-relnotes-1955741.html)
-- update tzupdater to 1_3_56-2013c
+- Update tzupdater to 1_3_56-2013c
 
 * Wed Apr 17 2013 Paul Howarth <paul@city-fan.org> - 1.7.0.21-1.0.cf
-- update to 1.7.0.21 (new features and security fixes; see release notes at
+- Update to 1.7.0.21 (new features and security fixes; see release notes at
   http://www.oracle.com/technetwork/java/javase/7u21-relnotes-1932873.html)
 
 * Mon Mar 18 2013 Paul Howarth <paul@city-fan.org> - 1.7.0.17-2.0.cf
-- sub-package JavaFX runtime as its dependencies cannot be satisfied on EL-5
+- Sub-package JavaFX runtime as its dependencies cannot be satisfied on EL-5
 
 * Tue Mar  5 2013 Paul Howarth <paul@city-fan.org> - 1.7.0.17-1.0.cf
-- update to 1.7.0.17 (multiple security fixes)
+- Update to 1.7.0.17 (multiple security fixes)
 
 * Wed Feb 20 2013 Paul Howarth <paul@city-fan.org> - 1.7.0.15-1.0.cf
-- update to 1.7.0.15 (multiple security fixes)
+- Update to 1.7.0.15 (multiple security fixes)
 
 * Mon Feb  4 2013 Paul Howarth <paul@city-fan.org> - 1.7.0.13-1.0.cf
-- update to 1.7.0.13 (multiple security fixes)
+- Update to 1.7.0.13 (multiple security fixes)
 
 * Mon Jan 14 2013 Paul Howarth <paul@city-fan.org> - 1.7.0.11-1.0.cf
-- update to 1.7.0.11 (multiple security fixes)
+- Update to 1.7.0.11 (multiple security fixes)
 
 * Wed Dec 12 2012 Paul Howarth <paul@city-fan.org> - 1.7.0.10-1.0.cf
-- update to 1.7.0.10 (bugfix and enhancement release)
-- update tzupdater to 1_3_53-2012j
+- Update to 1.7.0.10 (bugfix and enhancement release)
+- Update tzupdater to 1_3_53-2012j
 
 * Wed Oct 17 2012 Paul Howarth <paul@city-fan.org> - 1.7.0.9-1.0.cf
-- update to 1.7.0.9 (multiple security and other bugfixes)
-- update tzupdater to 1_3_49-2012f
+- Update to 1.7.0.9 (multiple security and other bugfixes)
+- Update tzupdater to 1_3_49-2012f
 
 * Fri Aug 31 2012 Paul Howarth <paul@city-fan.org> - 1.7.0.7-1.0.cf
-- update to 1.7.0.7 (security fix for CVE-2012-4681)
+- Update to 1.7.0.7 (security fix for CVE-2012-4681)
 
 * Wed Aug 22 2012 Paul Howarth <paul@city-fan.org> - 1.7.0.6-1.1.cf
-- filter ffmpeg dependencies added by JavaFX runtime; the runtime can use
+- Filter ffmpeg dependencies added by JavaFX runtime; the runtime can use
   either libavcodec.so.52 or libavcodec.so.53 (same for libavformat), but this
   cannot easily be captured as RPM dependencies - if you need the JavaFX
   runtime, install the appropriate ffmpeg package for your OS
 
 * Mon Aug 20 2012 Paul Howarth <paul@city-fan.org> - 1.7.0.6-1.0.cf
-- update to 1.7.0.6
+- Update to 1.7.0.6
   - JavaFX SDK and JavaFX Runtime included
   - Java Access Bridge included
-  - alternative hash function (disabled by default)
-  - changes to Security Warning dialog box for trusted signed and self signed
+  - Alternative hash function (disabled by default)
+  - Changes to Security Warning dialog box for trusted signed and self signed
     applications
-- update tzupdater to 1_3_48-2012d
+- Update tzupdater to 1_3_48-2012d
 
 * Wed Jun 13 2012 Paul Howarth <paul@city-fan.org> - 1.7.0.5-1.0.cf
-- update to 1.7.0.5 (multiple security fixes)
+- Update to 1.7.0.5 (multiple security fixes)
 
 * Fri Apr 27 2012 Paul Howarth <paul@city-fan.org> - 1.7.0.4-1.0.cf
-- update to 1.7.0.4
-  - new JVM (Java HotSpot Virtual Machine, version 23)
-  - new supported garbage collector: Garbage First (G1)
+- Update to 1.7.0.4
+  - New JVM (Java HotSpot Virtual Machine, version 23)
+  - New supported garbage collector: Garbage First (G1)
   - JavaFX 2.1 Runtime co-installs with JRE 7 during auto-update
   - JAXP upgraded to 1.4.6
   - Java DB upgraded to 10.8.2.2
-  - new flag to unlock commercial features
+  - New flag to unlock commercial features
 
 * Wed Feb 15 2012 Paul Howarth <paul@city-fan.org> - 1.7.0.3-1.0.cf
-- update to 1.7.0.3 (multiple security fixes)
+- Update to 1.7.0.3 (multiple security fixes)
 
 * Tue Dec 13 2011 Paul Howarth <paul@city-fan.org> - 1.7.0.2-1.0.cf
-- update to 1.7.0.2
-  - new JVM (Java HotSpot Virtual Machine, version 22) that improves
+- Update to 1.7.0.2
+  - New JVM (Java HotSpot Virtual Machine, version 22) that improves
     reliability and performance
-  - support for Firefox 5 and later
+  - Support for Firefox 5 and later
   - JavaFX is included with Java SE
-- update tzupdater to 1_3_45-2011n
-- demo and sample files now released separately upstream and not included in
+- Update tzupdater to 1_3_45-2011n
+- Demo and sample files now released separately upstream and not included in
   this package
 
 * Wed Oct 19 2011 Paul Howarth <paul@city-fan.org> - 1.7.0.1-1.0.cf
-- update to 1.7.0.1 (multiple security fixes)
-- update tzupdater to 1_3_42-2011k
+- Update to 1.7.0.1 (multiple security fixes)
+- Update tzupdater to 1_3_42-2011k
 
 * Mon Aug 15 2011 Paul Howarth <paul@city-fan.org> - 1.7.0.0-1.0.cf
-- first Oracle Java SE 7 build
-- thanks to Knut Jørgen Bjuland for the inspiration for this package
-- drop epoch for this renamed package, but retain epoch for JPackage provides
-- drop obsoletes/provides for never-existed -alsa and -fonts subpackages
-- tweak %%files list for jvm content changes in Java 7
-- don't require the tzupdater if we're not going to use it
-- clean up %%prep to use %%setup properly
-- update tzupdater to 1_3_40-2011h
+- First Oracle Java SE 7 build
+- Thanks to Knut Jørgen Bjuland for the inspiration for this package
+- Drop epoch for this renamed package, but retain epoch for JPackage provides
+- Drop obsoletes/provides for never-existed -alsa and -fonts subpackages
+- Tweak %%files list for jvm content changes in Java 7
+- Don't require the tzupdater if we're not going to use it
+- Clean up %%prep to use %%setup properly
+- Update tzupdater to 1_3_40-2011h
 
 * Wed Jun  8 2011 Paul Howarth <paul@city-fan.org> - 1:1.6.0.26-1.0.cf
-- update to 1.6.0.26 (multiple security fixes)
-- update tzupdater to 1_3_39-2011g
+- Update to 1.6.0.26 (multiple security fixes)
+- Update tzupdater to 1_3_39-2011g
 
 * Sat Apr 23 2011 Paul Howarth <paul@city-fan.org> - 1:1.6.0.25-1.0.cf
-- update to 1.6.0.25
-  - improved performance and stability
+- Update to 1.6.0.25
+  - Improved performance and stability
   - Java HotSpot™ VM 20
-  - support for Internet Explorer 9, Firefox 4 and Chrome 10
-  - improved BigDecimal
-- update tzupdater to 1_3_38-2011e
+  - Support for Internet Explorer 9, Firefox 4 and Chrome 10
+  - Improved BigDecimal
+- Update tzupdater to 1_3_38-2011e
 
 * Wed Feb 16 2011 Paul Howarth <paul@city-fan.org> - 1:1.6.0.24-1.0.cf
-- update to 1.6.0.24 (addresses CVE-2010-4476)
-- update tzupdater to 1_3_35-2011b
-- fix multilib conflicts in plugin subpackage (thanks to Vítor Ferreira)
+- Update to 1.6.0.24 (addresses CVE-2010-4476)
+- Update tzupdater to 1_3_35-2011b
+- Fix multilib conflicts in plugin subpackage (thanks to Vítor Ferreira)
 
 * Mon Dec 20 2010 Paul Howarth <paul@city-fan.org> - 1:1.6.0.23-1.0.cf
-- update to 1.6.0.23
+- Update to 1.6.0.23
 
 * Wed Dec  8 2010 Paul Howarth <paul@city-fan.org> - 1:1.6.0.22-2.0.cf
-- update tzupdater to 1_3_34-2010o
+- Update tzupdater to 1_3_34-2010o
 
 * Fri Oct 15 2010 Paul Howarth <paul@city-fan.org> - 1:1.6.0.22-1.1.cf
-- update tzupdater to 1_3_33-2010l
+- Update tzupdater to 1_3_33-2010l
 
 * Wed Oct 13 2010 Paul Howarth <paul@city-fan.org> - 1:1.6.0.22-1.0.cf
-- update to 1.6.0.22
+- Update to 1.6.0.22
 
 * Thu Sep  9 2010 Paul Howarth <paul@city-fan.org> - 1:1.6.0.21-1.0.cf
-- bump epoch to 1 as per Red Hat EL-5 package
-- add tzupdater 1_3_31-2010i
-- add a null vendor option in desktop-file-install so that it works with old
+- Bump epoch to 1 as per Red Hat EL-5 package
+- Add tzupdater 1_3_31-2010i
+- Add a null vendor option in desktop-file-install so that it works with old
   versions of desktop-file-utils such as CentOS 5
-- fix URL (#495280)
-- fix up some other package metadata to make it more in the Red Hat style
-- added arch to man path - enables both arch installed on one machine
-- add x86_64 to various directories on x86_64 to fix multilib conflicts
-- add x86_64 to alternatives names on x86_64 to fix multilib conflicts
-- use proper %%files lists rather than hacky script-based approach
+- Fix URL (#495280)
+- Fix up some other package metadata to make it more in the Red Hat style
+- Added arch to man path - enables both arch installed on one machine
+- Add x86_64 to various directories on x86_64 to fix multilib conflicts
+- Add x86_64 to alternatives names on x86_64 to fix multilib conflicts
+- Use proper %%files lists rather than hacky script-based approach
   (except for demo package)
-- drop legacy conflicts/obsoletes
-- move the demo files to %%{_jvmdir}/%%{sdkdir}/demo/
-- move javaws and ControlPanel to the plugin package
-- move %%{_jvmdir}/%%{jredir}/lib/security/trusted.libraries to the jdbc package
-- bump alternatives priority to 1600%%{buildver}
-- merge alsa subpackage into main package
-- merge fonts subpackage into main package
-- no longer need to package %%{_datadir}/pixmaps/%%{name}.png (references
+- Drop legacy conflicts/obsoletes
+- Move the demo files to %%{_jvmdir}/%%{sdkdir}/demo/
+- Move javaws and ControlPanel to the plugin package
+- Move %%{_jvmdir}/%%{jredir}/lib/security/trusted.libraries to the jdbc package
+- Bump alternatives priority to 1600%%{buildver}
+- Merge alsa subpackage into main package
+- Merge fonts subpackage into main package
+- No longer need to package %%{_datadir}/pixmaps/%%{name}.png (references
   removed from desktop files)
-- drop scriptlets for messing with /etc/fonts/fonts.conf; someone who knows
+- Drop scriptlets for messing with /etc/fonts/fonts.conf; someone who knows
   what they are doing should create a file to drop into /etc/fonts/conf.d
   instead
-- don't install /var/www/cgi-bin/java-rmi.cgi
+- Don't install /var/www/cgi-bin/java-rmi.cgi
 - %%ghost classes.jsa and build in %%post instead (i586 package only)
-- mark README.txt files as %%doc in demo package
-- remove unnecessary exec permissions on XML and properties files
-- make symlinks relative rather than absolute (BR: symlinks)
-- fix up desktop files to be like the Red Hat EL-5 package versions
-- add support for xz-compressed manpages
-- add further alternatives slaves for SDK binaries
+- Mark README.txt files as %%doc in demo package
+- Remove unnecessary exec permissions on XML and properties files
+- Make symlinks relative rather than absolute (BR: symlinks)
+- Fix up desktop files to be like the Red Hat EL-5 package versions
+- Add support for xz-compressed manpages
+- Add further alternatives slaves for SDK binaries
 
 * Sat Jul 24 2010 Paul Howarth <paul@city-fan.org> - 0:1.6.0.21-1.0.cf
-- update to 1.6.0.21
-- license changed to Oracle Corporation Binary Code License
+- Update to 1.6.0.21
+- License changed to Oracle Corporation Binary Code License
 
 * Mon Jul  5 2010 Paul Howarth <paul@city-fan.org> - 0:1.6.0.20-2.0.cf
-- use libnpjp2.so as the browser plugin for all architectures since the old
+- Use libnpjp2.so as the browser plugin for all architectures since the old
   libjavaplugin_oji.so doesn't work any more, at least in Fedora 13
 
 * Thu Apr 15 2010 Paul Howarth <paul@city-fan.org> - 0:1.6.0.20-1.0.cf
-- update to 1.6.0.20
+- Update to 1.6.0.20
 
 * Thu Apr  1 2010 Paul Howarth <paul@city-fan.org> - 0:1.6.0.19-1.0.cf
-- update to 1.6.0.19 (thanks to Stephan Buchert for update)
-- add %%{_jvmdir}/%%{jredir}/lib/security/trusted.libraries
+- Update to 1.6.0.19 (thanks to Stephan Buchert for update)
+- Add %%{_jvmdir}/%%{jredir}/lib/security/trusted.libraries
 
 * Tue Mar  2 2010 Paul Howarth <paul@city-fan.org> - 0:1.6.0.18-1.0.cf
-- update to 1.6.0.18
+- Update to 1.6.0.18
 
 * Thu Nov  5 2009 Paul Howarth <paul@city-fan.org> - 0:1.6.0.17-1.0.cf
-- update to 1.6.0.17
+- Update to 1.6.0.17
 
 * Mon Aug 17 2009 Paul Howarth <paul@city-fan.org> - 0:1.6.0.16-1.0.cf
-- update to 1.6.0.16
-- use %%{jrelnk} rather than %%{jredir} in alternatives links to make them
+- Update to 1.6.0.16
+- Use %%{jrelnk} rather than %%{jredir} in alternatives links to make them
   work across package updates
-- automatically remove old plugin alternatives
+- Automatically remove old plugin alternatives
 
 * Wed Aug  5 2009 Paul Howarth <paul@city-fan.org> - 0:1.6.0.15-1.0.cf
-- update to 1.6.0.15
-- add %%{_jvmdir}/%%{jredir}/lib/security/blacklist
-- specifically filter out unresolvable dependencies on libodbc.so and
+- Update to 1.6.0.15
+- Add %%{_jvmdir}/%%{jredir}/lib/security/blacklist
+- Specifically filter out unresolvable dependencies on libodbc.so and
   libodbcinst.so (we still have dependencies on %%{_libdir}/libodbc.so and
   %%{_libdir}/libodbcinst.so so we pull in the right packages)
-- make the javaws alternative a link from %%_bindir rather than %%_datadir;
+- Make the javaws alternative a link from %%_bindir rather than %%_datadir;
   this is incompatible with JPackage but matches java-1.6.0-openjdk in F9
-- if javaws is already registered as an alternatives java slave pointing from
+- If javaws is already registered as an alternatives java slave pointing from
   %%{_datadir}/javaws, fix it to point from %%{_bindir}/javaws instead;
   otherwise the alternatives install will fail; this is necessary to support
   upgrades from earlier java-1.6.0-sun packages
-- drop dependency on /usr/sbin/chkfontpath in fonts subpackage, since Fedora
+- Drop dependency on /usr/sbin/chkfontpath in fonts subpackage, since Fedora
   9 doesn't even include it in the distribution
-- add a symlink in /etc/X11/fontpath.d for the font directory instead
-- change %%x11bindir and %%x11encdir directories from old XFree86 locations
+- Add a symlink in /etc/X11/fontpath.d for the font directory instead
+- Change %%x11bindir and %%x11encdir directories from old XFree86 locations
   to modern X.Org locations suitable for Fedora 7 / CentOS 5 onwards
-- disable apparently-broken fiddling with /etc/mailcap and /etc/mime.types
+- Disable apparently-broken fiddling with /etc/mailcap and /etc/mime.types
   for jnlp files in %%post; instead add the MIME type to the desktop file and
   use update-desktop-database in %%post and %%postun
-- dispense with all efforts to manage plugin symlinks in versioned browser
+- Dispense with all efforts to manage plugin symlinks in versioned browser
   directories and instead use alternatives to manage a plugin link in
   %%_libdir/mozilla/plugins
-- tweak desktop files to make them pass desktop-file-validate and appear in
+- Tweak desktop files to make them pass desktop-file-validate and appear in
   the menus
-- don't repack jars
-- add alternatives links for jcontrol and jvisualvm
-- fix plugin alternatives name to be compatible with java-1.6.0-openjdk-plugin
-- add dependency on %%{_libdir}/mozilla/plugins dir rather than owning it
-- tweak categories in javaws desktop file as per java-1.6.0-openjdk
-- don't set up alternatives for no-longer-supplied manpages kinit, klist, ktab
-- use libnpjp2.so rather than libjavaplugin_jni.so for x86_64 browser plugin
-- use desktop-file-install to install desktop files
+- Don't repack jars
+- Add alternatives links for jcontrol and jvisualvm
+- Fix plugin alternatives name to be compatible with java-1.6.0-openjdk-plugin
+- Add dependency on %%{_libdir}/mozilla/plugins dir rather than owning it
+- Tweak categories in javaws desktop file as per java-1.6.0-openjdk
+- Don't set up alternatives for no-longer-supplied manpages kinit, klist, ktab
+- Use libnpjp2.so rather than libjavaplugin_jni.so for x86_64 browser plugin
+- Use desktop-file-install to install desktop files
 
-* Tue Jul 21 2009 Ralph Apel <r.apel@r-apel.de> 0:1.6.0.14-1jpp
+* Tue Jul 21 2009 Ralph Apel <r.apel@r-apel.de> - 0:1.6.0.14-1jpp
 - 1.6.0.14
 
-* Thu Jan 22 2009 Jason Corley <jason.corley@gmail.com> 0:1.6.0.11-1jpp
-- update copyright to include 2009
+* Thu Jan 22 2009 Jason Corley <jason.corley@gmail.com> - 0:1.6.0.11-1jpp
+- Update copyright to include 2009
 - 1.6.0.10
 
-* Tue Oct 21 2008 Jason Corley <jason.corley@gmail.com> 0:1.6.0.10-1jpp
+* Tue Oct 21 2008 Jason Corley <jason.corley@gmail.com> - 0:1.6.0.10-1jpp
 - 1.6.0.10
 
-* Mon Aug 11 2008 Jason Corley <jason.corley@gmail.com> 0:1.6.0.7-1jpp
+* Mon Aug 11 2008 Jason Corley <jason.corley@gmail.com> - 0:1.6.0.7-1jpp
 - 1.6.0.7
-- add new jvisualvm man page
+- Add new jvisualvm man page
 
-* Wed May 21 2008 Jason Corley <jason.corley@gmail.com> 0:1.6.0.6-1jpp
+* Wed May 21 2008 Jason Corley <jason.corley@gmail.com> - 0:1.6.0.6-1jpp
 - 1.6.0.6
 
-* Mon Mar 10 2008 Jason Corley <jason.corley@gmail.com> 0:1.6.0.5-1jpp
+* Mon Mar 10 2008 Jason Corley <jason.corley@gmail.com> - 0:1.6.0.5-1jpp
 - 1.6.0.5
-- update copyright
+- Update copyright
 
-* Mon Jan 14 2008 Jason Corley <jason.corley@gmail.com> 0:1.6.0.4-1jpp
+* Mon Jan 14 2008 Jason Corley <jason.corley@gmail.com> - 0:1.6.0.4-1jpp
 - 1.6.0.4
-- fix 64 bit build
+- Fix 64 bit build
 
-* Sun Oct 07 2007 Jason Corley <jason.corley@gmail.com> 0:1.6.0.3-1jpp
+* Sun Oct 07 2007 Jason Corley <jason.corley@gmail.com> - 0:1.6.0.3-1jpp
 - 1.6.0.3
 
-* Wed Jul 04 2007 Jason Corley <jason.corley@gmail.com> 0:1.6.0.2-1jpp
+* Wed Jul 04 2007 Jason Corley <jason.corley@gmail.com> - 0:1.6.0.2-1jpp
 - 1.6.0.2
 
-* Sat Jun 23 2007 Jason Corley <jason.corley@gmail.com> 0:1.6.0.1-1jpp
+* Sat Jun 23 2007 Jason Corley <jason.corley@gmail.com> 0- :1.6.0.1-1jpp
 - 1.6.0.1 (contributed by Lyle Dietz)
-- remove redundant defines for name, version, and release
-- remove vendor and distribution (should be defined in ~/.rpmmacros)
-- add JPackage license
+- Remove redundant defines for name, version, and release
+- Remove vendor and distribution (should be defined in ~/.rpmmacros)
+- Add JPackage license
 
-* Thu Dec 21 2006 Jason Corley <jason.corley@gmail.com> 0:1.5.0.10-2jpp
-- respin, no changes
+* Thu Dec 21 2006 Jason Corley <jason.corley@gmail.com> - 0:1.5.0.10-2jpp
+- Respin, no changes
 
-* Wed Dec 20 2006 Jason Corley <jason.corley@gmail.com> 0:1.5.0.10-1jpp
+* Wed Dec 20 2006 Jason Corley <jason.corley@gmail.com> - 0:1.5.0.10-1jpp
 - Upgrade to 1.5.0_10
 
-* Mon Oct  2 2006 Jason Corley <jason.corley@gmail.com> 0:1.5.0.09-1jpp
+* Mon Oct  2 2006 Jason Corley <jason.corley@gmail.com> - 0:1.5.0.09-1jpp
 - Upgrade to 1.5.0_09... stupid Sun :-P (submitted by Henning Schmiedehausen)
 
-* Fri Sep 29 2006 Jason Corley <jason.corley@gmail.com> 0:1.5.0.08-1jpp
+* Fri Sep 29 2006 Jason Corley <jason.corley@gmail.com> - 0:1.5.0.08-1jpp
 - Upgrade to 1.5.0_08
 
-* Thu Jun 8 2006 Jason Corley <jason.corley@gmail.com> 0:1.5.0.07-1jpp
+* Thu Jun 8 2006 Jason Corley <jason.corley@gmail.com> - 0:1.5.0.07-1jpp
 - Upgrade to 1.5.0_07
 
-* Fri Feb 3 2006 Jason Corley <jason.corley@gmail.com> 0:1.5.0.06-1jpp
+* Fri Feb 3 2006 Jason Corley <jason.corley@gmail.com> - 0:1.5.0.06-1jpp
 - Upgrade to 1.5.0_06
 
-* Wed Sep 28 2005 Jason Corley <jason.corley@gmail.com> 0:1.5.0.05-1jpp
+* Wed Sep 28 2005 Jason Corley <jason.corley@gmail.com> - 0:1.5.0.05-1jpp
 - Upgrade to 1.5.0_05
 
-* Mon Jun 27 2005 Jason Corley <jason.corley@gmail.com> 0:1.5.0.04-1jpp
+* Mon Jun 27 2005 Jason Corley <jason.corley@gmail.com> - 0:1.5.0.04-1jpp
 - Upgrade to 1.5.0_04
 
-* Wed May 04 2005 David Walluck <david@jpackage.org> 0:1.5.0.03-1jpp
+* Wed May 04 2005 David Walluck <david@jpackage.org> - 0:1.5.0.03-1jpp
 - 1.5.0_03
 
-* Wed Mar 16 2005 Jason Corley <jason.corley@gmail.com> 0:1.5.0.02-1jpp
+* Wed Mar 16 2005 Jason Corley <jason.corley@gmail.com> - 0:1.5.0.02-1jpp
 - Upgrade to 1.5.0_02
 
-* Tue Feb 08 2005 Kaj J. Niemi <kajtzu@fi.basen.net> 0:1.5.0.01-3jpp
+* Tue Feb 08 2005 Kaj J. Niemi <kajtzu@fi.basen.net> - 0:1.5.0.01-3jpp
 - Support for x86_64 (amd64); no javaws, no plugins
 
-* Wed Jan 19 2005 David Walluck <david@jpackage.org> 0:1.5.0.01-1jpp
+* Wed Jan 19 2005 David Walluck <david@jpackage.org> - 0:1.5.0.01-1jpp
 - 1.5.0_01
 
 * Thu Jan 06 2005 Carwyn Edwards <carwyn@carwyn.com> - 0:1.5.0.01-0.cte.1
-- Updated to Upstream 1.5.0_01.
-- Added long cvsversion definition.
-- Rearranged defintiions that are sensitive to buildver.
+- Updated to Upstream 1.5.0_01
+- Added long cvsversion definition
+- Rearranged definitions that are sensitive to buildver
 
 * Sat Nov 13 2004 Ville Skyttä <scop at jpackage.org> - 0:1.5.0-3jpp
-- Provide java-sasl.
+- Provide java-sasl
 - Fix build failure when no previous java-1.5.0 package is installed
-  (%%{jvmjardir}/*.jar are dangling symlinks at build time).
-- Minor spec cleanups and consistency tweaks.
+  (%%{jvmjardir}/*.jar are dangling symlinks at build time)
+- Minor spec cleanups and consistency tweaks
 
 * Sun Oct 17 2004 Carwyn Edwards <carwyn@carwyn.com> - 0:1.5.0-2jpp.cte.1
-- Switched off rpm internal dependency generator. This fixes the bogus
-  devel package provides noted in 1.5.0-0.beta2.4jpp.
+- Switched off rpm internal dependency generator; this fixes the bogus
+  devel package provides noted in 1.5.0-0.beta2.4jpp
 - Changed auto requires/provides for all packages to be the same as
-  java-1.4.2-sun (all on except jdbc due to libodbc name variability).
-- AutoReq off for demo package as it still looks for libjava_crw_demo_g.so.
+  java-1.4.2-sun (all on except jdbc due to libodbc name variability)
+- AutoReq off for demo package as it still looks for libjava_crw_demo_g.so
 
 * Mon Oct  4 2004 Ville Skyttä <scop at jpackage.org> - 0:1.5.0-2jpp
-- Update to 1.5.0, thanks to Carwyn Edwards.
-- Fix alternative priority (1500 -> 1503, where "3" is Sun).
+- Update to 1.5.0, thanks to Carwyn Edwards
+- Fix alternative priority (1500 -> 1503, where "3" is Sun)
 
 * Fri Oct 1 2004 Carwyn Edwards <carwyn@carwyn.com> - 0:1.5.0-0.cte.1
-- Added missing Obsoletes for java-1.4.2-plugin.
+- Added missing Obsoletes for java-1.4.2-plugin
 - Modified release version to use fedora.us style 0. so jpp packages
-  will override mine.
+  will override mine
 
 * Thu Sep 30 2004 Carwyn Edwards <carwyn@carwyn.com> - 0:1.5.0-1jpp
-- Updated to 1.5.0 final.
+- Updated to 1.5.0 final
 
 * Thu Sep 02 2004 Carwyn Edwards <carwyn@carwyn.com> - 0:1.5.0-0.rc.1jpp
-- Updated to J2SE 1.5.0 rc.
+- Updated to J2SE 1.5.0 rc
 - Added alternatives slaves for new tools (and their man pages):
-  apt, jinfo, jmap, jps, jsadebugd, jstack, jstat and jstatd.
+  apt, jinfo, jmap, jps, jsadebugd, jstack, jstat and jstatd
 
 * Mon Aug 02 2004 Carwyn Edwards <carwyn@carwyn.com> - 0:1.5.0-0.beta2.4jpp
-- Switch off AutoReq for demo package (breaks on: libjava_crw_demo.so).
-- Switch off AutoReqProv for devel package (Provides: lib.so!?).
+- Switch off AutoReq for demo package (breaks on: libjava_crw_demo.so)
+- Switch off AutoReqProv for devel package (Provides: lib.so!?)
 
-* Thu Jul 29 2004 Carwyn Edwards <carwyn@carwyn.com> 0:1.5.0-0.beta2.3jpp
-- Corrected Requires and BuildRequires for jpackage-utils (1.5.38).
+* Thu Jul 29 2004 Carwyn Edwards <carwyn@carwyn.com> - 0:1.5.0-0.beta2.3jpp
+- Corrected Requires and BuildRequires for jpackage-utils (1.5.38)
 
 * Sun Jul 25 2004 Carwyn Edwards <carwyn@carwyn.com> - 0:1.5.0-0.beta2.2jpp
-- Use %%{_datadir}/xml for XSL's per FHS.
+- Use %%{_datadir}/xml for XSL's per FHS
 - Change plugin handling to be the same as 1.4.2.05-3jpp(sun)
-  (adds firefox support).
-- Remove dependency on %%{_bindir}/mozilla.
+  (adds firefox support)
+- Remove dependency on %%{_bindir}/mozilla
 - Change manpage extension management to be the same as 1.4.2.05-3jpp(sun)
-  (also supports uncompressed man pages).
+  (also supports uncompressed man pages)
 - Rollback javaws alternative location to _datadir location so that concurrent
-  jdk installation works again.
-- Fixed freedesktop.org menu entry - Exec line was incorrect.
+  jdk installation works again
+- Fixed freedesktop.org menu entry - Exec line was incorrect
 - Corrected the way the jconsole, pack200 and unpack200 man pages were added
-  (use macros, added slave links).
-- Actaully add jconsole, pack200, unpack200 and their alternatives links.
+  (use macros, added slave links)
+- Actually add jconsole, pack200, unpack200 and their alternatives links
 
-* Fri Jul 23 2004 Carwyn Edwards <carwyn@carwyn.com> 0:1.5.0-0.beta2.1jpp
-- Updated to J2SE 1.5.0 Beta 2.
-- Upstream filenames have changed, string replacement: "j2sdk" -> "jdk".
-- Remove attempt to copy jre/.systemPrefs (it isn't there any more).
+* Fri Jul 23 2004 Carwyn Edwards <carwyn@carwyn.com> - 0:1.5.0-0.beta2.1jpp
+- Updated to J2SE 1.5.0 Beta 2
+- Upstream filenames have changed, string replacement: "j2sdk" -> "jdk"
+- Remove attempt to copy jre/.systemPrefs (it isn't there any more)
 - Added man pages for jconsole, pack200 and unpack200
 
-* Wed Feb 25 2004 David Walluck <david@anti-microsoft.org> 0:1.5.0-0.beta1.3jpp
-- remove some unused code from the spec file
+* Wed Feb 25 2004 David Walluck <david@anti-microsoft.org> - 0:1.5.0-0.beta1.3jpp
+- Remove some unused code from the spec file
 
-* Fri Feb 20 2004 David Walluck <david@anti-microsoft.org> 0:1.5.0-0.beta1.2jpp
-- find man extension based on distribution
-- ensure correct plugin installation
+* Fri Feb 20 2004 David Walluck <david@anti-microsoft.org> - 0:1.5.0-0.beta1.2jpp
+- Find man extension based on distribution
+- Ensure correct plugin installation
 - Obsoletes: java-1.4.2-fonts
-- install java-rmi.cgi
-- move ControlPanel back to main so that we can use update-alternatives
-- fix ControlPanel, HtmlConverter, and java-rmi.cgi bash scripts
-- use included .desktop file for ControlPanel and modify included .desktop file for javaws
+- Install java-rmi.cgi
+- Move ControlPanel back to main so that we can use update-alternatives
+- Fix ControlPanel, HtmlConverter, and java-rmi.cgi bash scripts
+- Use included .desktop file for ControlPanel and modify included .desktop file for javaws
 
-* Mon Feb 09 2004 David Walluck <david@anti-microsoft.org> 0:1.5.0-0.beta1.1jpp
+* Mon Feb 09 2004 David Walluck <david@anti-microsoft.org> - 0:1.5.0-0.beta1.1jpp
 - J2SE 1.5.0 Beta 1
-- change javaws alternative to point to %%{_bindir}/javaws and only edit
+- Change javaws alternative to point to %%{_bindir}/javaws and only edit
   %%{_sysconfdir}/mime.types if it exists
-- add javaws menu into main package (still looking for icon)
-- fix installing extensions when %%{version} = %%{javaver}
-- add epochs to all requires and provides
-- really turn off automatic dependency generation
+- Add javaws menu into main package (still looking for icon)
+- Fix installing extensions when %%{version} = %%{javaver}
+- Add epochs to all requires and provides
+- Really turn off automatic dependency generation
