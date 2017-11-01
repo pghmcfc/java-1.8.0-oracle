@@ -33,8 +33,8 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-#define buildver        0
-%define tzversion       1_4_2-2014a
+%define buildver        5
+%define tzversion       1_4_3-2014b
 # Note: when buildver reaches 2 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
 %define priority        18000%{?buildver}%{!?buildver:0}
@@ -47,7 +47,7 @@
 %define javaws_ver      %{javaver}
 %define javaws_version  %{cvsversion}
 
-%define toplevel_dir    jdk%{javaver}%{?buildver:_%{buildver}}
+%define toplevel_dir    jdk%{javaver}%{?buildver:_0%{buildver}}
 
 %ifarch %ix86
 %define target_cpu      i586
@@ -336,7 +336,7 @@ popd
 # ControlPanel freedesktop.org menu entry
 perl -p -i -e 's|INSTALL_DIR/JRE_NAME_VERSION|%{_jvmdir}/%{jredir}|g' jre/plugin/desktop/sun_java.desktop
 perl -p -i -e 's|Name=.*|Name=Oracle Java 8 Plugin Control Panel (%{target_cpu})|' jre/plugin/desktop/sun_java.desktop
-perl -p -i -e 's|Icon=.*|Icon=%{name}-jcontrol.png|' jre/plugin/desktop/sun_java.desktop
+perl -p -i -e 's|Icon=.*|Icon=%{name}-jcontrol|' jre/plugin/desktop/sun_java.desktop
 perl -p -i -e 's|Exec=.*|Exec=%{_jvmdir}/%{jredir}/bin/jcontrol|' jre/plugin/desktop/sun_java.desktop
 perl -p -i -e 's|Terminal=0|Terminal=false|' jre/plugin/desktop/sun_java.desktop
 perl -p -i -e 's|Categories=.*|Categories=Settings;X-GNOME-NetworkSettings;X-Sun-Supported;X-Red-Hat-Base;|' \
@@ -363,7 +363,7 @@ Encoding=UTF-8
 Name=Oracle Java 8 Web Start (%{target_cpu})
 Comment=Java Application Launcher
 Exec=%{_jvmdir}/%{jredir}/bin/javaws
-Icon=%{name}-javaws.png
+Icon=%{name}-javaws
 Terminal=false
 Type=Application
 NoDisplay=true
@@ -825,6 +825,12 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Thu Apr 17 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.5-1.0.cf
+- update to 1.8.0.5 (cumulative bugfix, enhancement and security update; see
+  release notes at
+  http://www.oracle.com/technetwork/java/javase/8train-relnotes-latest-2153846.html)
+- drop .png suffix from Icon specification in desktop files
+
 * Tue Mar 25 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.0-1.0.cf
 - first Oracle Java SE 8 build
 - thanks to Shawn Heisey for the inspiration for this package
