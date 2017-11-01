@@ -100,7 +100,7 @@
 
 Name:           java-%{javaver}-%{origin}
 Version:        %{javaver}%{?buildver:.%{buildver}}
-Release:        1.0.cf
+Release:        2.0.cf
 Summary:        Oracle Java Runtime Environment
 License:        Oracle Corporation Binary Code License
 Group:          Development/Languages
@@ -156,13 +156,20 @@ Requires(post):   %{_sbindir}/alternatives
 Requires(postun): %{_sbindir}/alternatives
 
 # Standard JPackage base provides
+Provides:       jre-headless = %{javaver}
+Provides:       jre-%{origin}-headless = %{jpp_epoch}:%{version}-%{release}
+Provides:       jre-%{javaver}-headless = %{jpp_epoch}:%{version}-%{release}
+Provides:       jre-%{javaver}-%{origin}-headless = %{jpp_epoch}:%{version}-%{release}
+Provides:       jre8-headless = %{javaver}
 Provides:       jre8-%{javaver}-%{origin}-headless = %{jpp_epoch}:%{version}-%{release}
 Provides:       jre8-%{origin}-headless = %{jpp_epoch}:%{version}-%{release}
 Provides:       jre8-%{javaver}-headless = %{jpp_epoch}:%{version}-%{release}
-Provides:       java8-%{javaver}-headless = %{jpp_epoch}:%{version}-%{release}
-Provides:       jre8-headless = %{javaver}
-Provides:       java8-%{origin}-headless = %{jpp_epoch}:%{version}-%{release}
+Provides:       java-headless = %{jpp_epoch}:%{javaver}
+Provides:       java-%{javaver}-headless = %{jpp_epoch}:%{version}-%{release}
+Provides:       java-%{origin}-headless = %{jpp_epoch}:%{version}-%{release}
 Provides:       java8-headless = %{jpp_epoch}:%{javaver}
+Provides:       java8-%{javaver}-headless = %{jpp_epoch}:%{version}-%{release}
+Provides:       java8-%{origin}-headless = %{jpp_epoch}:%{version}-%{release}
 
 # Standard JPackage extensions provides
 Provides:       jndi = %{jpp_epoch}:%{version}
@@ -870,12 +877,15 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
-* Wed Apr 15 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.45-1.0
+* Wed Apr 15 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.45-2.0.cf
+- update jre and java provides (thanks to Roderick Johnstone)
+
+* Wed Apr 15 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.45-1.0.cf
 - update to 1.8.0.45 (cumulative bugfix and security update; see release
   notes at
   http://www.oracle.com/technetwork/java/javase/8u45-relnotes-2494160.html)
 
-* Wed Mar  4 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.40-1.0
+* Wed Mar  4 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.40-1.0.cf
 - update to 1.8.0.40 (bugfix and enhancement release; see release notes at
   http://www.oracle.com/technetwork/java/javase/8u40-relnotes-2389089.html)
 - update tzupdater to 2_0_0-2015a
