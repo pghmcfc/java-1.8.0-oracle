@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -o errexit
+
+make srpm
+SRPM=$(make verrel).nosrc.rpm
+
+build-one () {
+	HERE=$(pwd)
+	ARCH=$1
+	SRPM=$2
+	setarch $ARCH rpmbuild \
+		--define "_sourcedir $HERE" \
+		--define "_specdir $HERE" \
+		--define "_builddir $HERE" \
+		--define "_srcrpmdir $HERE" \
+		--define "_rpmdir $HERE" \
+		--define "_source_filedigest_algorithm md5" \
+		--define "_binary_filedigest_algorithm md5" \
+		-bb java-1.8.0-oracle.spec
+}
+
+build-one x86_64 $SRPM
+build-one i386   $SRPM
+

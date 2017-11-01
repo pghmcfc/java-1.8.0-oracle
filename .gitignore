@@ -1,0 +1,6 @@
+/i586/
+/x86_64/
+/jce_policy-8.zip
+/jdk-8u[0-9]*-linux-i586.tar.gz
+/jdk-8u[0-9]*-linux-x64.tar.gz
+/tzupdater-[0-9_]*.zip
