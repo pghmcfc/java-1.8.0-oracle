@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        131
+%define buildver        141
 %define tzversion       2_1_1
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -103,7 +103,6 @@ Version:        %{javaver}%{?buildver:.%{buildver}}
 Release:        1.0.cf
 Summary:        Oracle Java Runtime Environment
 License:        Oracle Corporation Binary Code License
-Group:          Development/Languages
 URL:            http://download.oracle.com/javase/8/docs/
 Source0:        jdk-%{cvsversion}-linux-%{target_cpu}.tar.gz
 NoSource:       0
@@ -118,7 +117,6 @@ NoSource:       101
 Requires:       jpackage-utils >= 0:1.5.38
 Requires(post): %{_sbindir}/alternatives
 BuildArch:      i586 x86_64
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  jpackage-utils >= 0:1.5.38, sed, %{_bindir}/perl, symlinks
 BuildRequires:  desktop-file-utils
 Requires:       %{name}-headless = %{version}-%{release}
@@ -148,7 +146,6 @@ programming language.
 
 %package        headless
 Summary:        Oracle Java Runtime Environment
-Group:          Development/Languages
 Requires:       jpackage-utils >= 0:1.5.38
 # Post requires alternatives to install tool alternatives
 Requires(post):   %{_sbindir}/alternatives
@@ -198,7 +195,6 @@ The Oracle Java Runtime Environment without audio and video support.
 
 %package        devel
 Summary:        Oracle Java Development Kit
-Group:          Development/Languages
 Provides:       java-sdk-%{javaver}-%{origin} = %{version}-%{release}
 Provides:       java-sdk-%{origin} = %{version}-%{release}
 Provides:       java-sdk-%{javaver}, java-sdk = %{jpp_epoch}:%{javaver}
@@ -217,7 +213,6 @@ using the Java programming language.
 
 %package        src
 Summary:        Source files for Oracle JDK
-Group:          Development/Languages
 Requires:       %{name} = %{version}-%{release}
 
 %description    src
@@ -226,7 +221,6 @@ libraries.
 
 %package        plugin
 Summary:        Oracle Java browser plugin
-Group:          User Interface/Desktops
 Requires:       %{name} = %{version}-%{release}
 Requires:       %{_bindir}/find, sed
 Requires:       %{_libdir}/mozilla/plugins
@@ -245,7 +239,6 @@ This package contains the Oracle Java browser plugin and Java Web Start.
 
 %package	javafx
 Summary:	Oracle JavaFX runtime
-Group:          Development/Libraries
 Requires:       %{name} = %{version}-%{release}
 
 %description	javafx
@@ -292,8 +285,6 @@ find . \( -name '*.properties' -o -name '*.xml' \) -print0 | xargs -0 chmod -x
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 # fix up ControlPanel APPHOME and bin locations
 perl -p -i -e 's|APPHOME=.*|APPHOME=%{_jvmdir}/%{jredir}|' jre/bin/ControlPanel
 perl -p -i -e 's|/usr/bin/||g' jre/bin/ControlPanel
@@ -415,9 +406,6 @@ done
 
 # make placeholder directory for plugin
 mkdir -p $RPM_BUILD_ROOT%{_libdir}/mozilla/plugins
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %post
 update-desktop-database %{_datadir}/applications &> /dev/null || :
@@ -880,6 +868,14 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Jul 19 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.141-1.0.cf
+- update to 1.8.0.141 (cumulative bugfix, enhancement and security update; see
+  release notes at
+  http://www.oracle.com/technetwork/java/javase/8u141-relnotes-3720385.html)
+- drop legacy BuildRoot and Group tags
+- drop explicit buildroot cleaning in %%install section
+- drop explicit %%clean section
+
 * Wed Apr 19 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.131-1.0.cf
 - update to 1.8.0.131 (cumulative bugfix, enhancement and security update; see
   release notes at
