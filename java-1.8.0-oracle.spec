@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        72
+%define buildver        74
 %define tzversion       2_0_0-2015a
 # Note: when buildver reaches 3 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -877,6 +877,11 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Mon Feb  8 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.74-1.0.cf
+- update to 1.8.0.74 (cumulative bugfix, enhancement and security update; see
+  release notes at
+  http://www.oracle.com/technetwork/java/javase/8u74-relnotes-2879024.html)
+
 * Wed Jan 20 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.72-1.0.cf
 - update to 1.8.0.72 (cumulative bugfix and security update; see release
   notes at
