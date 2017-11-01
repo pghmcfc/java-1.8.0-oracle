@@ -33,8 +33,8 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        112
-%define tzversion       2_1_0
+%define buildver        121
+%define tzversion       2_1_1
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
 %define priority        180%{?buildver}%{!?buildver:000}
@@ -73,9 +73,9 @@
 %define javaplugin      libjavaplugin.so%{multi_suffix}
 %define pluginname      %{_jvmdir}/%{jrelnk}/lib/%{archname}/libnpjp2.so
 
-# Avoid RPM 4.2+'s internal dep generator, it may produce bogus
-# Provides/Requires here.
-%define _use_internal_dependency_generator 0
+# Don't want libav{codec,format} dependencies in the JavaFX package
+# as it supports multiple versions and we only need one of them, not all
+%global __requires_exclude ^libav(codec|format).*$
 
 # This prevents aggressive stripping.
 %define debug_package %{nil}
@@ -880,6 +880,13 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Jan 18 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.121-1.0.cf
+- update to 1.8.0.121 (cumulative bugfix, enhancement and security update; see
+  release notes at
+  http://www.oracle.com/technetwork/java/javase/8u121-relnotes-3315208.html)
+- update tzupdater to 2.1.1
+- filter libav* dependencies in javafx package
+
 * Wed Oct 19 2016 Paul Howarth <paul@city-fan.org> - 1.8.0.112-1.0.cf
 - update to 1.8.0.112 (cumulative bugfix, enhancement and security update; see
   release notes at
