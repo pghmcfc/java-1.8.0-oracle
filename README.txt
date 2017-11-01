@@ -1,17 +1,17 @@
 Get the JDK as follows:
 
 * Go to http://www.oracle.com/technetwork/java/javase/downloads/index.html
-* Click on the JDK Download button for Java SE 8u31
+* Click on the JDK Download button for Java SE 8u40
 * You need to accept the Oracle Binary Code License Agreement for Java SE before continuing
-* Download the Linux x86 - Compressed Binary (jdk-8u31-linux-i586.tar.gz),
-  or on x86_64, the Linux x64 - Compressed Binary (jdk-8u31-linux-x64.tar.gz)
+* Download the Linux x86 - Compressed Binary (jdk-8u40-linux-i586.tar.gz),
+  or on x86_64, the Linux x64 - Compressed Binary (jdk-8u40-linux-x64.tar.gz)
 
 Get the timezone updater as follows:
 
 * Go to http://www.oracle.com/technetwork/java/javase/downloads/index.html
 * Click on the Download button for Java Timezone Updater Tool
 * Check the box agreeing to the Java SE Timezone Updater License Agreement
-* Download the Java SE Timezone Updater 1.4.9 (tzupdater-1_4_9-2014i.zip)
+* Download the Java SE Timezone Updater 2.0 (tzupdater-2_0_0-2015a.zip)
 
 Get the strong encryption policy as follows:
 

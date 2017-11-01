@@ -33,8 +33,8 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        31
-%define tzversion       1_4_9-2014i
+%define buildver        40
+%define tzversion       2_0_0-2015a
 # Note: when buildver reaches 3 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
 %define priority        1800%{?buildver}%{!?buildver:00}
@@ -678,6 +678,7 @@ fi
 %{_jvmdir}/%{jredir}/lib/%{archname}/libattach.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libawt.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libawt_headless.so
+%{_jvmdir}/%{jredir}/lib/%{archname}/libbci.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libdcpr.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libdeploy.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libdt_socket.so
@@ -705,6 +706,7 @@ fi
 # Not sure why this is packaged here as well as the plugin package
 %{_jvmdir}/%{jredir}/lib/%{archname}/libnpjp2.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libnpt.so
+%{_jvmdir}/%{jredir}/lib/%{archname}/libresource.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libsaproc.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libsctp.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libsunec.so
@@ -848,7 +850,8 @@ fi
 %{_mandir}/man1/javaws-%{name}.%{_arch}.1*
 
 %files javafx
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin.so
+%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-53.so
+%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-54.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libdecora_sse.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libfxplugins.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libglass.so
@@ -867,6 +870,11 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Mar  4 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.40-1.0
+- update to 1.8.0.40 (bugfix and enhancement release; see release notes at
+  http://www.oracle.com/technetwork/java/javase/8u40-relnotes-2389089.html)
+- update tzupdater to 2_0_0-2015a
+
 * Tue Feb  3 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.31-1.0.cf
 - update to 1.8.0.31 (cumulative bugfix and security update; see release
   notes at
