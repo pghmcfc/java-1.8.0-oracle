@@ -33,12 +33,13 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        25
-%define tzversion       1_4_8-2014h
+%define buildver        31
+%define tzversion       1_4_9-2014i
 # Note: when buildver reaches 3 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
 %define priority        1800%{?buildver}%{!?buildver:00}
-%define tzupdate        1
+%define tzupdate        0
+%define jce_strongenc   1
 %define jpp_epoch       1
 
 # TODO: Think about using conditionals for version variants.
@@ -83,7 +84,19 @@
 # Prevent brp-java-repack-jars from being run.
 # This saves a lot of time and the resulting multilib issues
 # don't matter because this isn't a multilib-capable package.
+#
+# Horrible hack needed for EL-5, which does not support __jar_repack
+%if %(grep -F "release 5." /etc/redhat-release &>/dev/null && echo 1 || echo 0)
+%define __os_install_post \
+    /usr/lib/rpm/redhat/brp-compress ; \
+    %{!?__debug_package:/usr/lib/rpm/redhat/brp-strip %{__strip}} ; \
+    /usr/lib/rpm/redhat/brp-strip-static-archive %{__strip} ; \
+    /usr/lib/rpm/redhat/brp-strip-comment-note %{__strip} %{__objdump} ; \
+    /usr/lib/rpm/brp-python-bytecompile ; \
+%{nil}
+%else
 %define __jar_repack 0
+%endif
 
 Name:           java-%{javaver}-%{origin}
 Version:        %{javaver}%{?buildver:.%{buildver}}
@@ -97,6 +110,10 @@ NoSource:       0
 %if %{tzupdate}
 Source100:      tzupdater-%{tzversion}.zip
 NoSource:       100
+%endif
+%if %{jce_strongenc}
+Source101:      jce_policy-8.zip
+NoSource:       101
 %endif
 Requires:       jpackage-utils >= 0:1.5.38
 Requires(post): %{_sbindir}/alternatives
@@ -241,6 +258,13 @@ applications.
 rm -rf jre/lib/tzdb.dat.tzdata20[1-9][0-9][a-z]
 %else
 %setup -q -n %{toplevel_dir}
+%endif
+
+# Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files for JDK/JRE 8
+%if %{jce_strongenc}
+cd jre/lib/security/
+unzip -jo %{SOURCE101}
+cd -
 %endif
 
 # determine upstream release date
@@ -617,8 +641,12 @@ fi
 %{_jvmdir}/%{jredir}/lib/desktop/mime/
 
 %files headless
-%doc jre/COPYRIGHT jre/THIRDPARTYLICENSEREADME.txt jre/README
-%doc jre/Welcome.html
+%if 0%{?_licensedir:1}
+%license jre/COPYRIGHT jre/THIRDPARTYLICENSEREADME.txt
+%else
+%doc jre/COPYRIGHT jre/THIRDPARTYLICENSEREADME.txt
+%endif
+%doc jre/README jre/Welcome.html
 %dir %{_jvmdir}/%{sdkdir}/
 %dir %{_jvmdir}/%{jredir}/
 %dir %{_jvmdir}/%{jredir}/bin/
@@ -729,8 +757,14 @@ fi
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.policy
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.security
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/trusted.libraries
+%if %{jce_strongenc}
+%{_jvmdir}/%{jredir}/lib/security/local_policy.jar
+%{_jvmdir}/%{jredir}/lib/security/US_export_policy.jar
+%doc %{_jvmdir}/%{jredir}/lib/security/README.txt
+%else
 %ghost %{_jvmdir}/%{jredir}/lib/security/local_policy.jar
 %ghost %{_jvmdir}/%{jredir}/lib/security/US_export_policy.jar
+%endif
 %{_jvmdir}/%{jredir}/lib/tzdb.dat
 %{_jvmdir}/%{jrelnk}
 %{_jvmjardir}/%{jrelnk}
@@ -747,7 +781,12 @@ fi
 %{_mandir}/man1/tnameserv-%{name}.%{_arch}.1*
 
 %files devel
-%doc COPYRIGHT THIRDPARTYLICENSEREADME.txt README.html
+%if 0%{?_licensedir:1}
+%license COPYRIGHT THIRDPARTYLICENSEREADME.txt
+%else
+%doc COPYRIGHT THIRDPARTYLICENSEREADME.txt
+%endif
+%doc README.html
 %{_jvmdir}/%{sdkdir}/bin/
 %{_jvmdir}/%{sdkdir}/include/
 %{_jvmdir}/%{sdkdir}/lib/
@@ -828,6 +867,19 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Tue Feb  3 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.31-1.0.cf
+- update to 1.8.0.31 (cumulative bugfix and security update; see release
+  notes at
+  http://www.oracle.com/technetwork/java/javase/8u31-relnotes-2389094.html)
+- disable tzupdate for this release as bundled data is newer
+- include support for strong encryption policy (enabled by default), thanks to
+  Benjamin Fischer
+- add hack for disabling jar repacking on EL-5, thanks to Benjamin Fischer
+
+* Fri Dec 19 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.25-2.0.cf
+- update tzupdater to 1_4_9-2014i
+- use %%license where possible
+
 * Wed Oct 15 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.25-1.0.cf
 - update to 1.8.0.25 (cumulative bugfix and security update; see release
   notes at
