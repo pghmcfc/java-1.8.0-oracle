@@ -33,11 +33,11 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        5
-%define tzversion       1_4_3-2014b
-# Note: when buildver reaches 2 digits, drop a zero from the priority so
+%define buildver        11
+%define tzversion       1_4_5-2014e
+# Note: when buildver reaches 3 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
-%define priority        18000%{?buildver}%{!?buildver:0}
+%define priority        1800%{?buildver}%{!?buildver:00}
 %define tzupdate        1
 %define jpp_epoch       1
 
@@ -47,7 +47,7 @@
 %define javaws_ver      %{javaver}
 %define javaws_version  %{cvsversion}
 
-%define toplevel_dir    jdk%{javaver}%{?buildver:_0%{buildver}}
+%define toplevel_dir    jdk%{javaver}%{?buildver:_%{buildver}}
 
 %ifarch %ix86
 %define target_cpu      i586
@@ -825,6 +825,12 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Jul 16 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.11-1.0.cf
+- update to 1.8.0.11 (cumulative bugfix, enhancement and security update; see
+  release notes at
+  http://www.oracle.com/technetwork/java/javase/8u11-relnotes-2232915.html)
+- update tzupdater to 1_4_5-2014e
+
 * Thu Apr 17 2014 Paul Howarth <paul@city-fan.org> - 1.8.0.5-1.0.cf
 - update to 1.8.0.5 (cumulative bugfix, enhancement and security update; see
   release notes at
