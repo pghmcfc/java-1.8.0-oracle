@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        45
+%define buildver        60
 %define tzversion       2_0_0-2015a
 # Note: when buildver reaches 3 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -100,7 +100,7 @@
 
 Name:           java-%{javaver}-%{origin}
 Version:        %{javaver}%{?buildver:.%{buildver}}
-Release:        2.0.cf
+Release:        1.0.cf
 Summary:        Oracle Java Runtime Environment
 License:        Oracle Corporation Binary Code License
 Group:          Development/Languages
@@ -877,6 +877,11 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Sun Sep 20 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.60-1.0.cf
+- update to 1.8.0.60 (cumulative bugfix, enhancement and security update; see
+  release notes at
+  http://www.oracle.com/technetwork/java/javase/8u60-relnotes-2620227.html)
+
 * Wed Apr 15 2015 Paul Howarth <paul@city-fan.org> - 1.8.0.45-2.0.cf
 - update jre and java provides (thanks to Roderick Johnstone)
 
