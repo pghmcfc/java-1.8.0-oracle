@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        144
+%define buildver        152
 %define tzversion       2_1_1
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -762,6 +762,10 @@ fi
 %ghost %{_jvmdir}/%{jredir}/lib/security/local_policy.jar
 %ghost %{_jvmdir}/%{jredir}/lib/security/US_export_policy.jar
 %endif
+%{_jvmdir}/%{jredir}/lib/security/policy/limited/US_export_policy.jar
+%{_jvmdir}/%{jredir}/lib/security/policy/limited/local_policy.jar
+%{_jvmdir}/%{jredir}/lib/security/policy/unlimited/US_export_policy.jar
+%{_jvmdir}/%{jredir}/lib/security/policy/unlimited/local_policy.jar
 %{_jvmdir}/%{jredir}/lib/tzdb.dat
 %{_jvmdir}/%{jrelnk}
 %{_jvmjardir}/%{jrelnk}
@@ -868,6 +872,10 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Oct 18 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.152-1.0.cf
+- update to 1.8.0.152 (bugfix and security update; see release notes at
+  http://www.oracle.com/technetwork/java/javase/8u152-relnotes-3850503.html)
+
 * Thu Jul 27 2017 Paul Howarth <paul@city-fan.org> - 1.8.0.144-1.0.cf
 - update to 1.8.0.144 (bugfix and security update; see release notes at
   http://www.oracle.com/technetwork/java/javase/8u144-relnotes-3838694.html)
