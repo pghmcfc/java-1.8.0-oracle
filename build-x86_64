@@ -1,12 +1,8 @@
 #!/bin/bash
 
-make srpm
-SRPM=$(make verrel).nosrc.rpm
-
 build-one () {
 	HERE=$(pwd)
 	ARCH=$1
-	SRPM=$2
 	export QA_RPATHS=$[ 0x0001 ]
 	setarch $ARCH rpmbuild \
 		--define "_sourcedir $HERE" \
@@ -19,5 +15,5 @@ build-one () {
 		-bb java-1.8.0-oracle.spec
 }
 
-build-one x86_64 $SRPM
+build-one x86_64
 

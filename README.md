@@ -1,6 +1,17 @@
 java-1.8.0-oracle
 =================
 
+RPM packaging for Oracle Java SE 8 that's compatible with the way Java is
+packaged in Fedora and Red Hat Enterprise Linux.
+
+Issues/enhancements for this package can be raised here:
+
+https://github.com/pghmcfc/java-1.8.0-oracle
+
+or here:
+
+http://trac.city-fan.org/cfo-trac/browser/java-1.8.0-oracle/trunk
+
 Downloading Sources
 -------------------
 
@@ -19,8 +30,14 @@ Get the timezone updater as follows:
 - Check the box agreeing to the Java SE Timezone Updater License Agreement
 - Download the Java SE Timezone Updater 2.1.1 (tzupdater-2_1_1.zip)
 
-Building
---------
+Building on Target Host
+-----------------------
+
+Just use the provided `build-*` scripts to build either the i586, x86_64, or
+both versions.
+
+Building Using Mock
+-------------------
 
 This uses the NoSource approach, and so when building in mock a
 recipe such as the following is needed:
