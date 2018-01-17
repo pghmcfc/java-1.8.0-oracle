@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        152
+%define buildver        162
 %define tzversion       2_1_1
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -67,7 +67,6 @@
 %define sdkbindir       %{_jvmdir}/%{sdklnk}/bin
 %define sdklibdir       %{_jvmdir}/%{sdklnk}/lib
 %define jrebindir       %{_jvmdir}/%{jrelnk}/bin
-%define jvmjardir       %{_jvmjardir}/%{name}-%{version}%{multi_suffix}
 %define javaplugin      libjavaplugin.so%{multi_suffix}
 %define pluginname      %{_jvmdir}/%{jrelnk}/lib/%{archname}/libnpjp2.so
 
@@ -98,7 +97,7 @@
 
 Name:           java-%{javaver}-%{origin}
 Version:        %{javaver}%{?buildver:.%{buildver}}
-Release:        2.0.cf
+Release:        1.0.cf
 Summary:        Oracle Java Runtime Environment
 License:        Oracle Corporation Binary Code License
 URL:            http://download.oracle.com/javase/8/docs/
@@ -293,43 +292,13 @@ install -d -m 755 $RPM_BUILD_ROOT%{_jvmdir}/%{sdkdir}
 cp -a bin include lib src.zip $RPM_BUILD_ROOT%{_jvmdir}/%{sdkdir}
 install -d -m 755 $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}
 
-# extensions handling
-install -d -m 755 $RPM_BUILD_ROOT%{jvmjardir}
-pushd $RPM_BUILD_ROOT%{jvmjardir}
-   # we'll make these symlinks relative later on...
-   ln -s $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/jsse.jar jsse-%{version}.jar
-   ln -s $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/jce.jar jce-%{version}.jar
-   ln -s $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/rt.jar jndi-%{version}.jar
-   ln -s $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/rt.jar jndi-ldap-%{version}.jar
-   ln -s $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/rt.jar jndi-cos-%{version}.jar
-   ln -s $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/rt.jar jndi-rmi-%{version}.jar
-   ln -s $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/rt.jar jaas-%{version}.jar
-   ln -s $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/rt.jar jdbc-stdext-%{version}.jar
-   ln -s $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/rt.jar sasl-%{version}.jar
-   ln -s jdbc-stdext-%{version}.jar jdbc-stdext-3.0.jar
-   for jar in *-%{version}.jar ; do
-      if [ x%{version} != x%{javaver} ]; then
-         ln -fs ${jar} $(echo $jar | sed "s|-%{version}.jar|-%{javaver}.jar|g")
-      fi
-      ln -fs ${jar} $(echo $jar | sed "s|-%{version}.jar|.jar|g")
-   done
-popd
-
 # rest of the jre
 cp -a jre/bin jre/lib jre/plugin $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}
 install -d -m 755 $RPM_BUILD_ROOT%{_jvmdir}/%{jredir}/lib/endorsed
 
-# fix up extensions symlinks
-symlinks -cs $RPM_BUILD_ROOT%{jvmjardir}
-
 # versionless symlinks
 pushd $RPM_BUILD_ROOT%{_jvmdir}
 ln -s %{jredir} %{jrelnk}
-ln -s %{sdkdir} %{sdklnk}
-popd
-
-pushd $RPM_BUILD_ROOT%{_jvmjardir}
-ln -s %{sdkdir} %{jrelnk}
 ln -s %{sdkdir} %{sdklnk}
 popd
 
@@ -398,7 +367,6 @@ ext=
 
 update-alternatives --install %{_bindir}/java java %{jrebindir}/java %{priority} \
 --slave %{_jvmdir}/jre                     jre                         %{_jvmdir}/%{jrelnk} \
---slave %{_jvmjardir}/jre                  jre_exports                 %{_jvmjardir}/%{jrelnk} \
 --slave %{_bindir}/jcontrol                jcontrol                    %{jrebindir}/jcontrol \
 --slave %{_bindir}/jjs                     jjs                         %{jrebindir}/jjs \
 --slave %{_bindir}/keytool                 keytool                     %{jrebindir}/keytool \
@@ -418,11 +386,9 @@ update-alternatives --install %{_bindir}/java java %{jrebindir}/java %{priority}
 --slave %{_mandir}/man1/servertool.1$ext   servertool.1$ext            %{_mandir}/man1/servertool-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/tnameserv.1$ext    tnameserv.1$ext             %{_mandir}/man1/tnameserv-%{name}.%{_arch}.1$ext
 
-update-alternatives --install %{_jvmdir}/jre-%{origin} jre_%{origin} %{_jvmdir}/%{jrelnk} %{priority} \
---slave %{_jvmjardir}/jre-%{origin}        jre_%{origin}_exports     %{_jvmjardir}/%{jrelnk}
+update-alternatives --install %{_jvmdir}/jre-%{origin} jre_%{origin} %{_jvmdir}/%{jrelnk} %{priority}
 
-update-alternatives --install %{_jvmdir}/jre-%{javaver} jre_%{javaver} %{_jvmdir}/%{jrelnk} %{priority} \
---slave %{_jvmjardir}/jre-%{javaver}       jre_%{javaver}_exports      %{_jvmjardir}/%{jrelnk}
+update-alternatives --install %{_jvmdir}/jre-%{javaver} jre_%{javaver} %{_jvmdir}/%{jrelnk} %{priority}
 
 # build classes.jsa
 %ifnarch x86_64
@@ -440,7 +406,6 @@ ext=
 
 update-alternatives --install %{_bindir}/javac javac %{sdkbindir}/javac %{priority} \
 --slave %{_jvmdir}/java                     java_sdk                    %{_jvmdir}/%{sdklnk} \
---slave %{_jvmjardir}/java                  java_sdk_exports            %{_jvmjardir}/%{sdklnk} \
 --slave %{_bindir}/appletviewer             appletviewer                %{sdkbindir}/appletviewer \
 --slave %{_bindir}/extcheck                 extcheck                    %{sdkbindir}/extcheck \
 --slave %{_bindir}/idlj                     idlj                        %{sdkbindir}/idlj \
@@ -512,11 +477,9 @@ update-alternatives --install %{_bindir}/javac javac %{sdkbindir}/javac %{priori
 --slave %{_mandir}/man1/wsimport.1$ext      wsimport.1$ext              %{_mandir}/man1/wsimport-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/xjc.1$ext           xjc.1$ext                   %{_mandir}/man1/xjc-%{name}.%{_arch}.1$ext
 
-update-alternatives --install %{_jvmdir}/java-%{origin} java_sdk_%{origin} %{_jvmdir}/%{sdklnk} %{priority} \
---slave %{_jvmjardir}/java-%{origin}        java_sdk_%{origin}_exports     %{_jvmjardir}/%{sdklnk}
+update-alternatives --install %{_jvmdir}/java-%{origin} java_sdk_%{origin} %{_jvmdir}/%{sdklnk} %{priority}
 
-update-alternatives --install %{_jvmdir}/java-%{javaver} java_sdk_%{javaver} %{_jvmdir}/%{sdklnk} %{priority} \
---slave %{_jvmjardir}/java-%{javaver}       java_sdk_%{javaver}_exports      %{_jvmjardir}/%{sdklnk}
+update-alternatives --install %{_jvmdir}/java-%{javaver} java_sdk_%{javaver} %{_jvmdir}/%{sdklnk} %{priority}
 
 %postun
 update-desktop-database %{_datadir}/applications &> /dev/null || :
@@ -719,8 +682,6 @@ fi
 %{_jvmdir}/%{jredir}/lib/security/policy/unlimited/local_policy.jar
 %{_jvmdir}/%{jredir}/lib/tzdb.dat
 %{_jvmdir}/%{jrelnk}
-%{_jvmjardir}/%{jrelnk}
-%{_jvmjardir}/%{sdkdir}/
 %{_mandir}/man1/java-%{name}.%{_arch}.1*
 %{_mandir}/man1/jjs-%{name}.%{_arch}.1*
 %{_mandir}/man1/keytool-%{name}.%{_arch}.1*
@@ -742,7 +703,6 @@ fi
 %{_jvmdir}/%{sdkdir}/include/
 %{_jvmdir}/%{sdkdir}/lib/
 %{_jvmdir}/%{sdklnk}
-%{_jvmjardir}/%{sdklnk}
 %{_mandir}/man1/appletviewer-%{name}.%{_arch}.1*
 %{_mandir}/man1/extcheck-%{name}.%{_arch}.1*
 %{_mandir}/man1/idlj-%{name}.%{_arch}.1*
@@ -803,7 +763,9 @@ fi
 %{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-54.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-55.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-56.so
+%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-57.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-56.so
+%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-57.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libdecora_sse.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libfxplugins.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libglass.so
@@ -822,6 +784,11 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Jan 17 2018 Paul Howarth <paul@city-fan.org> - 1.8.0.162-1.0.cf
+- Update to 1.8.0.162 (bugfix and security update; see release notes at
+  http://www.oracle.com/technetwork/java/javase/8u162-relnotes-4021436.html)
+- Remove no longer defined jvmjardir (see https://bugzilla.redhat.com/1473896)
+
 * Sat Oct 28 2017 Jonathan G. Underwood <jonathan.underwood@gmail.com> - 1.8.0.152-2.0.cf
 - Use bundled limited and unlimited JCE policy
 - No longer set up JCE policy with alternatives
