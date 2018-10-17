@@ -33,12 +33,12 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        172
+%define buildver        181
 %define tzversion       2_1_2
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
 %define priority        180%{?buildver}%{!?buildver:000}
-%define tzupdate        1
+%define tzupdate        0
 %define jpp_epoch       1
 
 # TODO: Think about using conditionals for version variants.
@@ -784,6 +784,10 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Jul 18 2018 Paul Howarth <paul@city-fan.org> - 1.8.0.181-1.0.cf
+- Update to 1.8.0.181 (bugfix and security update; see release notes at
+  http://www.oracle.com/technetwork/java/javase/8u181-relnotes-4479407.html)
+
 * Wed Apr 18 2018 Paul Howarth <paul@city-fan.org> - 1.8.0.172-1.0.cf
 - Update to 1.8.0.172 (bugfix and security update; see release notes at
   http://www.oracle.com/technetwork/java/javase/8u172-relnotes-4308893.html)
