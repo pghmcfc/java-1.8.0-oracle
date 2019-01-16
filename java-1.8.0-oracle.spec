@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        192
+%define buildver        202
 %define tzversion       2_2_0
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -72,11 +72,15 @@
 
 # Don't want libav{codec,format} dependencies in the JavaFX package
 # as it supports multiple versions and we only need one of them, not all
-%global __requires_exclude ^libav(codec|format).*$
+# Similarly, don't want gtk2 and gtk3 dependencies in the main package
+%global __requires_exclude ^lib(av(codec|format)|cairo-gobject|g[dt]k-).*$
 
 # This prevents aggressive stripping.
 %define debug_package %{nil}
 %define __strip /bin/true
+
+# Prevent mangling of /bin/bash and /bin/sh shebangs, which will break installs on EL-6
+%global __brp_mangle_shebangs_exclude ^/bin/(ba)?sh$
 
 # Prevent brp-java-repack-jars from being run.
 # This saves a lot of time and the resulting multilib issues
@@ -264,7 +268,10 @@ touch --date="$reldate" jre/{COPYRIGHT,THIRDPARTYLICENSEREADME.txt,README,Welcom
 %endif
 
 # properties and XML files should not be executable
-find . \( -name '*.properties' -o -name '*.xml' \) -print0 | xargs -0 chmod -x
+find . \( -name '*.properties' -o -name '*.xml' \) -print0 | xargs -0 chmod -c -x
+
+# neither should jmc.ini
+chmod -c -x bin/jmc.ini
 
 %build
 # Nope.
@@ -541,6 +548,8 @@ fi
 
 %files
 %{_jvmdir}/%{jredir}/lib/%{archname}/libawt_xawt.so
+%{_jvmdir}/%{jredir}/lib/%{archname}/libglassgtk2.so
+%{_jvmdir}/%{jredir}/lib/%{archname}/libglassgtk3.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libjawt.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libjsoundalsa.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libsplashscreen.so
@@ -615,7 +624,6 @@ fi
 %{_jvmdir}/%{jredir}/lib/%{archname}/libjsdt.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libjsig.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libjsound.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libkcms.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/liblcms.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libmanagement.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libmlib_image.so
@@ -785,6 +793,14 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Jan 16 2019 Paul Howarth <paul@city-fan.org> - 1.8.0.202-1.0.cf
+- Update to 1.8.0.202 (bugfix and security update; see release notes at
+  https://www.oracle.com/technetwork/java/javase/8u202-relnotes-5209339.html)
+- Filter gtk dependencies as both gtk2 and gtk3 are supported but only one is
+  needed
+- Prevent mangling of /bin/bash and /bin/sh shebangs, which would break
+  installs on EL-6
+
 * Wed Oct 17 2018 Paul Howarth <paul@city-fan.org> - 1.8.0.192-1.0.cf
 - Update to 1.8.0.192 (bugfix and security update; see release notes at
   https://www.oracle.com/technetwork/java/javase/8u192-relnotes-4479409.html)
