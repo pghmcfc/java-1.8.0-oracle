@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        202
+%define buildver        212
 %define tzversion       2_2_0
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -103,7 +103,7 @@ Name:           java-%{javaver}-%{origin}
 Version:        %{javaver}%{?buildver:.%{buildver}}
 Release:        1.0.cf
 Summary:        Oracle Java Runtime Environment
-License:        Oracle Corporation Binary Code License
+License:        Oracle Technology Network License Agreement for Oracle Java SE
 URL:            http://download.oracle.com/javase/8/docs/
 Source0:        jdk-%{cvsversion}-linux-%{target_cpu}.tar.gz
 NoSource:       0
@@ -793,6 +793,12 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Thu Apr 18 2019 Paul Howarth <paul@city-fan.org> - 1.8.0.212-1.0.cf
+- Update to 1.8.0.212 (bugfix and security update; see release notes at
+  https://www.oracle.com/technetwork/java/javase/8u212-relnotes-5292913.html)
+- License changed to Oracle Technology Network License Agreement for Oracle
+  Java SE
+
 * Wed Jan 16 2019 Paul Howarth <paul@city-fan.org> - 1.8.0.202-1.0.cf
 - Update to 1.8.0.202 (bugfix and security update; see release notes at
   https://www.oracle.com/technetwork/java/javase/8u202-relnotes-5209339.html)
