@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        212
+%define buildver        221
 %define tzversion       2_2_0
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -775,6 +775,7 @@ fi
 %{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-57.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-56.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-57.so
+%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-58.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libdecora_sse.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libfxplugins.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libglass.so
@@ -793,6 +794,10 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Jul 17 2019 Paul Howarth <paul@city-fan.org> - 1.8.0.221-1.0.cf
+- Update to 1.8.0.221 (bugfix and security update; see release notes at
+  https://www.oracle.com/technetwork/java/javase/8u221-relnotes-5480116.html)
+
 * Thu Apr 18 2019 Paul Howarth <paul@city-fan.org> - 1.8.0.212-1.0.cf
 - Update to 1.8.0.212 (bugfix and security update; see release notes at
   https://www.oracle.com/technetwork/java/javase/8u212-relnotes-5292913.html)

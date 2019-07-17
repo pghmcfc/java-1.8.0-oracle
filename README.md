@@ -18,12 +18,12 @@ Downloading Sources
 Get the JDK as follows:
 
 - Go to http://www.oracle.com/technetwork/java/javase/downloads/index.html
+- Click on the JDK Download button for Java SE 8u221
 - You need to accept the Oracle Technology Network License Agreement for Oracle
   Java SE before continuing
-- Click on the JDK Download button for Java SE 8u211/8u212
-- Download the Linux x86 - Compressed Binary (jdk-8u212-linux-i586.tar.gz),
-  or on x86_64, the Linux x64 - Compressed Binary (jdk-8u212-linux-x64.tar.gz)
-  You may need to create/sogn in to an Oracle account at this point
+- Download the Linux x86 - Compressed Binary (jdk-8u221-linux-i586.tar.gz),
+  or on x86_64, the Linux x64 - Compressed Binary (jdk-8u221-linux-x64.tar.gz)
+  You may need to create/sign in to an Oracle account at this point
 
 Get the timezone updater as follows:
 
@@ -45,9 +45,9 @@ This uses the NoSource approach, and so when building in mock a
 recipe such as the following is needed:
 
 ```bash
-mock -r fedora-29-x86_64 init
-mock -r fedora-29-x86_64 --copyin jdk-8u212-linux-x64.tar.gz /builddir/build/SOURCES
-mock --dnf -r fedora-29-x86_64 --no-clean --rebuild java-1.8.0-oracle-1.8.0.212-1.fc29.nosrc.rpm
+mock -r fedora-30-x86_64 init
+mock -r fedora-30-x86_64 --copyin jdk-8u221-linux-x64.tar.gz /builddir/build/SOURCES
+mock --dnf -r fedora-30-x86_64 --no-clean --rebuild java-1.8.0-oracle-1.8.0.221-1.fc30.nosrc.rpm
 ```
 
 This assumes rpm has been configured as below:
