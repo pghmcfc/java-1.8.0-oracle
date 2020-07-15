@@ -33,8 +33,8 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        251
-%define tzversion       2_3_0
+%define buildver        261
+%define tzversion       2.3.1
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
 %define priority        180%{?buildver}%{!?buildver:000}
@@ -270,9 +270,6 @@ touch --date="$reldate" jre/{COPYRIGHT,THIRDPARTYLICENSEREADME.txt,README,Welcom
 # properties and XML files should not be executable
 find . \( -name '*.properties' -o -name '*.xml' \) -print0 | xargs -0 chmod -c -x
 
-# neither should jmc.ini
-chmod -c -x bin/jmc.ini
-
 %build
 # Nope.
 
@@ -434,7 +431,6 @@ update-alternatives --install %{_bindir}/javac javac %{sdkbindir}/javac %{priori
 --slave %{_bindir}/jhat                     jhat                        %{sdkbindir}/jhat \
 --slave %{_bindir}/jinfo                    jinfo                       %{sdkbindir}/jinfo \
 --slave %{_bindir}/jmap                     jmap                        %{sdkbindir}/jmap \
---slave %{_bindir}/jmc                      jmc                         %{sdkbindir}/jmc \
 --slave %{_bindir}/jps                      jps                         %{sdkbindir}/jps \
 --slave %{_bindir}/jrunscript               jrunscript                  %{sdkbindir}/jrunscript \
 --slave %{_bindir}/jsadebugd                jsadebugd                   %{sdkbindir}/jsadebugd \
@@ -471,7 +467,6 @@ update-alternatives --install %{_bindir}/javac javac %{sdkbindir}/javac %{priori
 --slave %{_mandir}/man1/jhat.1$ext          jhat.1$ext                  %{_mandir}/man1/jhat-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jinfo.1$ext         jinfo.1$ext                 %{_mandir}/man1/jinfo-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jmap.1$ext          jmap.1$ext                  %{_mandir}/man1/jmap-%{name}.%{_arch}.1$ext \
---slave %{_mandir}/man1/jmc.1$ext           jmc.1$ext                   %{_mandir}/man1/jmc-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jps.1$ext           jps.1$ext                   %{_mandir}/man1/jps-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jrunscript.1$ext    jrunscript.1$ext            %{_mandir}/man1/jrunscript-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jsadebugd.1$ext     jsadebugd.1$ext             %{_mandir}/man1/jsadebugd-%{name}.%{_arch}.1$ext \
@@ -735,7 +730,6 @@ fi
 %{_mandir}/man1/jcmd-%{name}.%{_arch}.1*
 %{_mandir}/man1/jinfo-%{name}.%{_arch}.1*
 %{_mandir}/man1/jmap-%{name}.%{_arch}.1*
-%{_mandir}/man1/jmc-%{name}.%{_arch}.1*
 %{_mandir}/man1/jps-%{name}.%{_arch}.1*
 %{_mandir}/man1/jsadebugd-%{name}.%{_arch}.1*
 %{_mandir}/man1/jstack-%{name}.%{_arch}.1*
@@ -793,6 +787,18 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Jul 15 2020 Paul Howarth <paul@city-fan.org> - 1.8.0.261-1.0.cf
+- Update to 1.8.0.261
+  - Bugfix and security update; see release notes at
+    https://www.oracle.com/java/technologies/javase/8u261-relnotes.html
+  - This version of the JDK no longer includes Java Mission Control (JMC)
+    - The jmc launcher has been removed from the JDK bin directory, and the
+      missioncontrol directory has been removed from the JDK lib directory
+    - The .jfr file association is not registered by JDK installers
+    - JMC is now available as a separate download; please visit
+      https://www.oracle.com/javase/jmc for more information
+- Update tzupdater to 2.3.1
+
 * Wed Apr 15 2020 Paul Howarth <paul@city-fan.org> - 1.8.0.251-1.0.cf
 - Update to 1.8.0.251 (bugfix and security update; see release notes at
   https://www.oracle.com/technetwork/java/javase/8u251-relnotes-5972664.html)
