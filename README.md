@@ -17,20 +17,20 @@ Downloading Sources
 
 Get the JDK as follows:
 
-- Go to http://www.oracle.com/technetwork/java/javase/downloads/index.html
-- Click on the JDK Download button for Java SE 8u261
+- Go to https://www.oracle.com/java/technologies/javase-downloads.html#JDK8
+- Click on the JDK Download button for Java SE 8u271
 - You need to accept the Oracle Technology Network License Agreement for Oracle
   Java SE before continuing
-- Download the Linux x86 - Compressed Binary (jdk-8u261-linux-i586.tar.gz),
-  or on x86_64, the Linux x64 - Compressed Binary (jdk-8u261-linux-x64.tar.gz)
+- Download the Linux x86 - Compressed Binary (jdk-8u271-linux-i586.tar.gz),
+  or on x86_64, the Linux x64 - Compressed Binary (jdk-8u271-linux-x64.tar.gz)
   You may need to create/sign in to an Oracle account at this point
 
 Get the timezone updater as follows:
 
-- Go to http://www.oracle.com/technetwork/java/javase/downloads/index.html
-- Click on the Download button for Java Timezone Updater Tool
-- Check the box agreeing to the Java SE Timezone Updater License Agreement
+- Go to https://www.oracle.com/java/technologies/javase-tzupdater-downloads.html
 - Download the Java SE Timezone Updater 2.3.1 (tzupdater-2.3.1.zip)
+- You need to accept the Java SE Timezone Updater License Agreement before the
+  download will start
 
 Building on Target Host
 -----------------------
@@ -46,8 +46,8 @@ recipe such as the following is needed:
 
 ```bash
 mock -r fedora-32-x86_64 init
-mock -r fedora-32-x86_64 --copyin jdk-8u261-linux-x64.tar.gz /builddir/build/SOURCES
-mock --dnf -r fedora-32-x86_64 --no-clean --rebuild java-1.8.0-oracle-1.8.0.261-1.fc32.nosrc.rpm
+mock -r fedora-32-x86_64 --copyin jdk-8u271-linux-x64.tar.gz /builddir/build/SOURCES
+mock --dnf -r fedora-32-x86_64 --no-clean --rebuild java-1.8.0-oracle-1.8.0.271-1.fc32.nosrc.rpm
 ```
 
 This assumes rpm has been configured as below:

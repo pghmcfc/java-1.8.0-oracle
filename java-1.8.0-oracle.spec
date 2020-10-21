@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        261
+%define buildver        271
 %define tzversion       2.3.1
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -68,7 +68,7 @@
 %define sdklibdir       %{_jvmdir}/%{sdklnk}/lib
 %define jrebindir       %{_jvmdir}/%{jrelnk}/bin
 %define javaplugin      libjavaplugin.so%{multi_suffix}
-%define pluginname      %{_jvmdir}/%{jrelnk}/lib/%{archname}/libnpjp2.so
+%define pluginname      /dev/null
 
 # Don't want libav{codec,format} dependencies in the JavaFX package
 # as it supports multiple versions and we only need one of them, not all
@@ -624,8 +624,6 @@ fi
 %{_jvmdir}/%{jredir}/lib/%{archname}/libmlib_image.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libnet.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libnio.so
-# Not sure why this is packaged here as well as the plugin package
-%{_jvmdir}/%{jredir}/lib/%{archname}/libnpjp2.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libnpt.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libresource.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libsaproc.so
@@ -758,7 +756,6 @@ fi
 %{_jvmdir}/%{jredir}/lib/javaws.jar
 %{_jvmdir}/%{jredir}/lib/plugin.jar
 %{_jvmdir}/%{jredir}/plugin/
-%{_jvmdir}/%{jrelnk}/lib/%{archname}/libnpjp2.so
 %{_mandir}/man1/javaws-%{name}.%{_arch}.1*
 
 %files javafx
@@ -787,6 +784,13 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Oct 21 2020 Paul Howarth <paul@city-fan.org> - 1.8.0.271-1.0.cf
+- Update to 1.8.0.271
+  - Bugfix and security update; see release notes at
+    https://www.oracle.com/java/technologies/javase/8u271-relnotes.html
+  - This version of the JDK no longer includes the Java browser plugin
+    (NPAPI)
+
 * Wed Jul 15 2020 Paul Howarth <paul@city-fan.org> - 1.8.0.261-1.0.cf
 - Update to 1.8.0.261
   - Bugfix and security update; see release notes at
