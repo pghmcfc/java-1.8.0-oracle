@@ -33,12 +33,12 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        281
+%define buildver        291
 %define tzversion       2.3.2
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
 %define priority        180%{?buildver}%{!?buildver:000}
-%define tzupdate        1
+%define tzupdate        0
 %define jpp_epoch       1
 
 # TODO: Think about using conditionals for version variants.
@@ -79,25 +79,10 @@
 %define debug_package %{nil}
 %define __strip /bin/true
 
-# Prevent mangling of /bin/bash and /bin/sh shebangs, which will break installs on EL-6
-%global __brp_mangle_shebangs_exclude ^/bin/(ba)?sh$
-
 # Prevent brp-java-repack-jars from being run.
 # This saves a lot of time and the resulting multilib issues
 # don't matter because this isn't a multilib-capable package.
-#
-# Horrible hack needed for EL-5, which does not support __jar_repack
-%if %(grep -F "release 5." /etc/redhat-release &>/dev/null && echo 1 || echo 0)
-%define __os_install_post \
-    /usr/lib/rpm/redhat/brp-compress ; \
-    %{!?__debug_package:/usr/lib/rpm/redhat/brp-strip %{__strip}} ; \
-    /usr/lib/rpm/redhat/brp-strip-static-archive %{__strip} ; \
-    /usr/lib/rpm/redhat/brp-strip-comment-note %{__strip} %{__objdump} ; \
-    /usr/lib/rpm/brp-python-bytecompile ; \
-%{nil}
-%else
 %define __jar_repack 0
-%endif
 
 Name:           java-%{javaver}-%{origin}
 Version:        %{javaver}%{?buildver:.%{buildver}}
@@ -562,11 +547,7 @@ fi
 %{_jvmdir}/%{jredir}/lib/desktop/mime/
 
 %files headless
-%if 0%{?_licensedir:1}
 %license jre/COPYRIGHT jre/THIRDPARTYLICENSEREADME.txt
-%else
-%doc jre/COPYRIGHT jre/THIRDPARTYLICENSEREADME.txt
-%endif
 %doc jre/README jre/Welcome.html
 %dir %{_jvmdir}/%{sdkdir}/
 %dir %{_jvmdir}/%{jredir}/
@@ -677,6 +658,7 @@ fi
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/cacerts
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.policy
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.security
+%config(noreplace) %{_jvmdir}/%{jredir}/lib/security/public_suffix_list.dat
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/trusted.libraries
 %{_jvmdir}/%{jredir}/lib/security/policy/limited/US_export_policy.jar
 %{_jvmdir}/%{jredir}/lib/security/policy/limited/local_policy.jar
@@ -695,11 +677,7 @@ fi
 %{_mandir}/man1/tnameserv-%{name}.%{_arch}.1*
 
 %files devel
-%if 0%{?_licensedir:1}
 %license COPYRIGHT THIRDPARTYLICENSEREADME.txt
-%else
-%doc COPYRIGHT THIRDPARTYLICENSEREADME.txt
-%endif
 %doc README.html
 %{_jvmdir}/%{sdkdir}/bin/
 %{_jvmdir}/%{sdkdir}/include/
@@ -784,6 +762,15 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Apr 21 2021 Paul Howarth <paul@city-fan.org> - 1.8.0.291-1.0.cf
+- Update to 1.8.0.291
+  - Bugfix and security update; see release notes at
+    https://www.oracle.com/java/technologies/javase/8u291-relnotes.html
+- Drop workarounds for packaging issues on EL-5 and EL-6
+  - Mangling of /bin/bash and /bin/sh shebangs re-enabled
+  - %%__jar_repack macro always assumed to be supported
+- Use %%license unconditionally
+
 * Wed Jan 20 2021 Paul Howarth <paul@city-fan.org> - 1.8.0.281-1.0.cf
 - Update to 1.8.0.281
   - Bugfix and security update; see release notes at
