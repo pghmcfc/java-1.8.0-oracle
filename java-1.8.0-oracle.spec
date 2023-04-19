@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        301
+%define buildver        371
 %define tzversion       2.3.2
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -420,7 +420,6 @@ update-alternatives --install %{_bindir}/javac javac %{sdkbindir}/javac %{priori
 --slave %{_bindir}/jrunscript               jrunscript                  %{sdkbindir}/jrunscript \
 --slave %{_bindir}/jsadebugd                jsadebugd                   %{sdkbindir}/jsadebugd \
 --slave %{_bindir}/jstack                   jstack                      %{sdkbindir}/jstack \
---slave %{_bindir}/jvisualvm                jvisualvm                   %{sdkbindir}/jvisualvm \
 --slave %{_bindir}/jstat                    jstat                       %{sdkbindir}/jstat \
 --slave %{_bindir}/jstatd                   jstatd                      %{sdkbindir}/jstatd \
 --slave %{_bindir}/schemagen                schemagen                   %{sdkbindir}/schemagen \
@@ -456,7 +455,6 @@ update-alternatives --install %{_bindir}/javac javac %{sdkbindir}/javac %{priori
 --slave %{_mandir}/man1/jrunscript.1$ext    jrunscript.1$ext            %{_mandir}/man1/jrunscript-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jsadebugd.1$ext     jsadebugd.1$ext             %{_mandir}/man1/jsadebugd-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jstack.1$ext        jstack.1$ext                %{_mandir}/man1/jstack-%{name}.%{_arch}.1$ext \
---slave %{_mandir}/man1/jvisualvm.1$ext     jvisualvm.1$ext             %{_mandir}/man1/jvisualvm-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jstat.1$ext         jstat.1$ext                 %{_mandir}/man1/jstat-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jstatd.1$ext        jstatd.1$ext                %{_mandir}/man1/jstatd-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/schemagen.1$ext     schemagen.1$ext             %{_mandir}/man1/schemagen-%{name}.%{_arch}.1$ext \
@@ -696,7 +694,6 @@ fi
 %{_mandir}/man1/javapackager-%{name}.%{_arch}.1*
 %{_mandir}/man1/jdb-%{name}.%{_arch}.1*
 %{_mandir}/man1/jdeps-%{name}.%{_arch}.1*
-%{_mandir}/man1/jvisualvm-%{name}.%{_arch}.1*
 %{_mandir}/man1/native2ascii-%{name}.%{_arch}.1*
 %{_mandir}/man1/rmic-%{name}.%{_arch}.1*
 %{_mandir}/man1/serialver-%{name}.%{_arch}.1*
@@ -745,6 +742,7 @@ fi
 %{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-56.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-57.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-58.so
+%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-59.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libdecora_sse.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libfxplugins.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libglass.so
@@ -762,6 +760,14 @@ fi
 %{_jvmdir}/%{jredir}/lib/jfxswt.jar
 
 %changelog
+* Wed Apr 19 2023 Paul Howarth <paul@city-fan.org> - 1.8.0.371-1.0.cf
+- Update to 1.8.0.371
+  - Bugfix and security update; see release notes at
+    https://www.oracle.com/java/technologies/javase/8u371-relnotes.html
+  - This version of the JDK no longer includes a copy of Java VisualVM;
+    VisualVM is now available as a separate download
+    Please visit https://visualvm.github.io/ for more information
+
 * Wed Jul 21 2021 Paul Howarth <paul@city-fan.org> - 1.8.0.301-1.0.cf
 - Update to 1.8.0.301
   - Bugfix and security update; see release notes at
