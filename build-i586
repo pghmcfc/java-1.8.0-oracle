@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This is not working on Fedora 39:
+# https://github.com/rpm-software-management/rpm/issues/2850
+
 build-one () {
 	HERE=$(pwd)
 	ARCH=$1
