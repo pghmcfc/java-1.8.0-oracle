@@ -14,8 +14,8 @@ Downloading Sources
 Get the JDK as follows:
 
 - Go to https://www.oracle.com/java/technologies/downloads/#java8
-- Download the Linux x86 - Compressed Binary (jdk-8u421-linux-i586.tar.gz),
-  or on x86_64, the Linux x64 - Compressed Binary (jdk-8u421-linux-x64.tar.gz)
+- Download the Linux x86 - Compressed Binary (jdk-8u431-linux-i586.tar.gz),
+  or on x86_64, the Linux x64 - Compressed Binary (jdk-8u431-linux-x64.tar.gz)
   You may need to create/sign in to an Oracle account at this point
 - You need to accept the Oracle Technology Network License Agreement for Oracle
   Java SE before continuing
@@ -40,9 +40,9 @@ This uses the NoSource approach, and so when building in mock a
 recipe such as the following is needed:
 
 ```bash
-mock -r fedora-39-x86_64 init
-mock -r fedora-39-x86_64 --copyin jdk-8u421-linux-x64.tar.gz /builddir/build/SOURCES
-mock --dnf -r fedora-39-x86_64 --no-clean --rebuild java-1.8.0-oracle-1.8.0.421-1.fc39.nosrc.rpm
+mock -r fedora-40-x86_64 init
+mock -r fedora-40-x86_64 --copyin jdk-8u431-linux-x64.tar.gz /builddir/build/SOURCES
+mock --dnf -r fedora-40-x86_64 --no-clean --rebuild java-1.8.0-oracle-1.8.0.431-1.fc40.nosrc.rpm
 ```
 
 This assumes rpm has been configured as below:
