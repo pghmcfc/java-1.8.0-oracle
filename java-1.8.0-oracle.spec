@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        441
+%define buildver        451
 %define tzversion       2.3.2
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -218,19 +218,6 @@ Obsoletes:      javaws-menu
 
 %description    plugin
 This package contains the Oracle Java browser plugin and Java Web Start.
-
-%package	javafx
-Summary:	Oracle JavaFX runtime
-Requires:       %{name} = %{version}-%{release}
-
-%description	javafx
-This package contains the Oracle JavaFX runtime. JavaFX is the next step in
-the evolution of Java as a rich client platform. It is designed to provide a
-lightweight, hardware-accelerated Java UI platform for enterprise business
-applications. With JavaFX, developers can preserve existing investments by
-reusing Java libraries in their applications. They can even access native
-system capabilities, or seamlessly connect to server-based middleware
-applications.
 
 
 %prep
@@ -433,12 +420,8 @@ update-alternatives --install %{_bindir}/javac javac %{sdkbindir}/javac %{priori
 --slave %{_mandir}/man1/jarsigner.1$ext     jarsigner.1$ext             %{_mandir}/man1/jarsigner-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/javac.1$ext         javac.1$ext                 %{_mandir}/man1/javac-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/javadoc.1$ext       javadoc.1$ext               %{_mandir}/man1/javadoc-%{name}.%{_arch}.1$ext \
---slave %{_mandir}/man1/javafxpackager.1$ext \
-                                            javafxpackager.1$ext        %{_mandir}/man1/javafxpackager-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/javah.1$ext         javah.1$ext                 %{_mandir}/man1/javah-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/javap.1$ext         javap.1$ext                 %{_mandir}/man1/javap-%{name}.%{_arch}.1$ext \
---slave %{_mandir}/man1/javapackager.1$ext \
-                                            javapackager.1$ext          %{_mandir}/man1/javapackager-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jdb.1$ext           jdb.1$ext                   %{_mandir}/man1/jdb-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/jdeps.1$ext         jdeps.1$ext                 %{_mandir}/man1/jdeps-%{name}.%{_arch}.1$ext \
 --slave %{_mandir}/man1/native2ascii.1$ext  native2ascii.1$ext          %{_mandir}/man1/native2ascii-%{name}.%{_arch}.1$ext \
@@ -526,8 +509,6 @@ fi
 
 %files
 %{_jvmdir}/%{jredir}/lib/%{archname}/libawt_xawt.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libglassgtk2.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libglassgtk3.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libjawt.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libjsoundalsa.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libsplashscreen.so
@@ -583,7 +564,6 @@ fi
 %{_jvmdir}/%{jredir}/lib/%{archname}/libdeploy.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libdt_socket.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libfontmanager.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libglib-lite.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libhprof.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libinstrument.so
 %{_jvmdir}/%{jredir}/lib/%{archname}/libj2gss.so
@@ -656,7 +636,6 @@ fi
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/cacerts
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.policy
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.security
-%config(noreplace) %{_jvmdir}/%{jredir}/lib/security/public_suffix_list.dat
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/trusted.libraries
 %{_jvmdir}/%{jredir}/lib/security/policy/limited/US_export_policy.jar
 %{_jvmdir}/%{jredir}/lib/security/policy/limited/local_policy.jar
@@ -688,10 +667,8 @@ fi
 %{_mandir}/man1/jarsigner-%{name}.%{_arch}.1*
 %{_mandir}/man1/javac-%{name}.%{_arch}.1*
 %{_mandir}/man1/javadoc-%{name}.%{_arch}.1*
-%{_mandir}/man1/javafxpackager-%{name}.%{_arch}.1*
 %{_mandir}/man1/javah-%{name}.%{_arch}.1*
 %{_mandir}/man1/javap-%{name}.%{_arch}.1*
-%{_mandir}/man1/javapackager-%{name}.%{_arch}.1*
 %{_mandir}/man1/jdb-%{name}.%{_arch}.1*
 %{_mandir}/man1/jdeps-%{name}.%{_arch}.1*
 %{_mandir}/man1/native2ascii-%{name}.%{_arch}.1*
@@ -733,35 +710,13 @@ fi
 %{_jvmdir}/%{jredir}/plugin/
 %{_mandir}/man1/javaws-%{name}.%{_arch}.1*
 
-%files javafx
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-53.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-54.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-55.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-56.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-57.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-56.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-57.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-58.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-59.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-60.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libavplugin-ffmpeg-61.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libdecora_sse.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libfxplugins.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libglass.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libgstreamer-lite.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libjavafx_font.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libjavafx_font_freetype.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libjavafx_font_pango.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libjavafx_iio.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libjfxmedia.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libjfxwebkit.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libprism_common.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libprism_es2.so
-%{_jvmdir}/%{jredir}/lib/%{archname}/libprism_sw.so
-%{_jvmdir}/%{jredir}/lib/javafx.properties
-%{_jvmdir}/%{jredir}/lib/jfxswt.jar
-
 %changelog
+* Wed Apr 16 2025 Paul Howarth <paul@city-fan.org> - 1.8.0.451-1.0.cf
+- Update to 1.8.0.451
+  - Bugfix, security and update release; see release notes at
+    https://www.oracle.com/java/technologies/javase/8u451-relnotes.html
+- JavaFX no longer included in upstream release due to end of support
+
 * Wed Jan 22 2025 Paul Howarth <paul@city-fan.org> - 1.8.0.441-1.0.cf
 - Update to 1.8.0.441
   - Bugfix, security and update release; see release notes at
