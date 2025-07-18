@@ -33,7 +33,7 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        451
+%define buildver        461
 %define tzversion       2.3.2
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
@@ -711,6 +711,11 @@ fi
 %{_mandir}/man1/javaws-%{name}.%{_arch}.1*
 
 %changelog
+* Fri Jul 18 2025 Paul Howarth <paul@city-fan.org> - 1.8.0.461-1.0.cf
+- Update to 1.8.0.461
+  - Bugfix, security and update release; see release notes at
+    https://www.oracle.com/java/technologies/javase/8u461-relnotes.html
+
 * Wed Apr 16 2025 Paul Howarth <paul@city-fan.org> - 1.8.0.451-1.0.cf
 - Update to 1.8.0.451
   - Bugfix, security and update release; see release notes at
