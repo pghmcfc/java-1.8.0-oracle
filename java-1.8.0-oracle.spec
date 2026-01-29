@@ -33,8 +33,8 @@
 %define origin          oracle
 %define javaver         1.8.0
 %define cvsver          8
-%define buildver        471
-%define tzversion       2.3.2
+%define buildver        481
+%define tzversion       2.3.3
 # Note: if buildver reaches 4 digits, drop a zero from the priority so
 # that the priority number remains 6 digits
 %define priority        180%{?buildver}%{!?buildver:000}
@@ -223,7 +223,7 @@ This package contains the Oracle Java browser plugin and Java Web Start.
 %prep
 %if %{tzupdate}
 %setup -q -n %{toplevel_dir} -a 100
-./bin/java -jar tzupdater-%(echo %{tzversion} | tr _ .)/tzupdater.jar -v -u
+./bin/java -jar tzupdater.jar -v -u
 rm -rf jre/lib/tzdb.dat.tzdata20[1-9][0-9][a-z]
 %else
 %setup -q -n %{toplevel_dir}
@@ -711,6 +711,12 @@ fi
 %{_mandir}/man1/javaws-%{name}.%{_arch}.1*
 
 %changelog
+* Thu Jan 29 2026 Paul Howarth <paul@city-fan.org> - 1.8.0.481-1.0.cf
+- Update to 1.8.0.481
+  - Bugfix, security and update release; see release notes at
+    https://www.oracle.com/java/technologies/javase/8u481-relnotes.html
+- Update tzupdater to 2.3.3
+
 * Mon Oct 27 2025 Paul Howarth <paul@city-fan.org> - 1.8.0.471-1.0.cf
 - Update to 1.8.0.471
   - Bugfix, security and update release; see release notes at
